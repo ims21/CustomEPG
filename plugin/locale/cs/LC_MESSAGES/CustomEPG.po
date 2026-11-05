@@ -1,0 +1,122 @@
+# Language cs/LC translations for PACKAGE package.
+# Copyright (C) 2026 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 21:22+0100\n"
+"PO-Revision-Date: 2026-11-05 21:38+0100\n"
+"Last-Translator: ims <ims@openpli.org>\n"
+"Language-Team: none\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#: ../services.py:73
+msgid "Add"
+msgstr "Přidat"
+
+#: ../services.py:70
+msgid "Cancel"
+msgstr ""
+
+#: ../epg.py:173
+msgid "Cannot load CustomEPG settings."
+msgstr "Nastavení pro CustomEPG."
+
+#: ../epg.py:148 ../services.py:92
+#, python-format
+msgid ""
+"Cannot load CustomEPG settings:\n"
+"%s"
+msgstr ""
+"Nelze načíst nastavení CustomEPG:\n"
+"%s"
+
+#: ../services.py:136
+#, python-format
+msgid ""
+"Cannot save CustomEPG settings:\n"
+"%s"
+msgstr ""
+"Nelze uložit nastavení CustomEPG:\n"
+"%s."
+
+#: ../services.py:142
+msgid "Close without saving changes?"
+msgstr "Zavřít bez uložení?"
+
+#: ../services.py:57
+msgid "CustomEPG - Services"
+msgstr "CustomEPG - Programy"
+
+#: ../plugin.py:14
+msgid "EPG for selected services"
+msgstr "EPG pro zvolené programy"
+
+#: ../epg.py:177
+msgid "No EPG available for the selected services."
+msgstr ""
+
+#: ../epg.py:179
+msgid "No events match the time filter."
+msgstr ""
+
+#: ../services.py:103
+msgid "Press BLUE to add a service from a bouquet."
+msgstr ""
+
+#: ../epg.py:175
+msgid "Press BLUE to select services."
+msgstr ""
+
+#: ../epg.py:168
+msgid "Rating"
+msgstr "Věk"
+
+#: ../epg.py:126 ../epg.py:228
+msgid "Refresh"
+msgstr ""
+
+#: ../services.py:72
+msgid "Remove"
+msgstr ""
+
+#: ../services.py:71
+msgid "Save"
+msgstr ""
+
+#: ../services.py:31
+msgid "Select service for CustomEPG"
+msgstr "Vyberte program pro CustomEPG"
+
+#: ../epg.py:125
+msgid "Services"
+msgstr "Programy"
+
+#: ../services.py:103
+#, python-format
+msgid "Services: %d"
+msgstr "Programy: %d"
+
+#: ../epg.py:181
+#, python-format
+msgid "Services: %d | Events: %d"
+msgstr "Programy: %d | pořady: %d"
+
+#: ../services.py:131
+msgid "Settings could not be loaded. Fix the settings file before saving."
+msgstr ""
+
+#: ../services.py:116
+msgid "This service is already selected."
+msgstr ""
+
+#: ../epg.py:168
+msgid "Time"
+msgstr ""
