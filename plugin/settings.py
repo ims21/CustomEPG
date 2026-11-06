@@ -8,7 +8,6 @@ from Screens.MessageBox import MessageBox
 
 from . import _
 from .configuration import cfg
-from .plugin import syncExtensionsMenu
 
 
 class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
