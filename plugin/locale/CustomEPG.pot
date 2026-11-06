@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 06:53+0100\n"
+"POT-Creation-Date: 2026-11-06 07:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 msgid "CustomEPG settings"
 msgstr ""
 
-#: ../plugin.py:25 ../plugin.py:36
+#: ../plugin.py:20
 msgid "EPG for selected services"
 msgstr ""
 
@@ -97,10 +97,6 @@ msgstr ""
 
 #: ../epg.py:185
 msgid "Press BLUE to select services."
-msgstr ""
-
-#: ../epg.py:178
-msgid "Rating"
 msgstr ""
 
 #: ../epg.py:136 ../epg.py:278
@@ -157,10 +153,14 @@ msgstr ""
 msgid "This service is already selected."
 msgstr ""
 
-#: ../epg.py:178
-msgid "Time"
-msgstr ""
-
 #: ../epg.py:222
 msgid "Timer Overview"
+msgstr ""
+
+#: ../epg.py:178
+msgid "by rating"
+msgstr ""
+
+#: ../epg.py:178
+msgid "by time"
 msgstr ""

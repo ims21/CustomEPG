@@ -175,7 +175,7 @@ class CustomEPGSelection(EPGSelection):
 			fetch()
 
 	def updateTitle(self):
-		title = "CustomEPG - " + (_("Time"), "A-Z", _("Rating"))[self.sort_type]
+		title = "CustomEPG - " + (_("by time"), "A-Z", _("by rating"))[self.sort_type]
 		if self.filtering:
 			title += " " + self.getTimespanText()
 		self.setTitle(title)

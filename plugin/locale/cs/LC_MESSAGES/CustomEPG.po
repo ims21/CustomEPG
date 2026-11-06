@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 06:53+0100\n"
-"PO-Revision-Date: 2026-11-06 06:58+0100\n"
+"POT-Creation-Date: 2026-11-06 07:41+0100\n"
+"PO-Revision-Date: 2026-11-06 07:42+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -73,9 +73,9 @@ msgstr "CustomEPG - nastavení"
 
 #: ../epg.py:224
 msgid "CustomEPG settings"
-msgstr "Nastavení pro CustomEPG"
+msgstr "Nastavení CustomEPG"
 
-#: ../plugin.py:25 ../plugin.py:36
+#: ../plugin.py:20
 msgid "EPG for selected services"
 msgstr "EPG pro zvolené programy"
 
@@ -102,10 +102,6 @@ msgstr "Pro přidání programu z přehledu stiskněte Modré."
 #: ../epg.py:185
 msgid "Press BLUE to select services."
 msgstr "Stiskněte Modré pro přidání programů."
-
-#: ../epg.py:178
-msgid "Rating"
-msgstr "Věk"
 
 #: ../epg.py:136 ../epg.py:278
 msgid "Refresh"
@@ -161,10 +157,14 @@ msgstr "Standardní"
 msgid "This service is already selected."
 msgstr "Tento program je již vybrán."
 
-#: ../epg.py:178
-msgid "Time"
-msgstr ""
-
 #: ../epg.py:222
 msgid "Timer Overview"
 msgstr ""
+
+#: ../epg.py:178
+msgid "by rating"
+msgstr "podle věku"
+
+#: ../epg.py:178
+msgid "by time"
+msgstr "podle času"
