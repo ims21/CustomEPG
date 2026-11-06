@@ -31,12 +31,12 @@ class CustomEPGList(EPGList):
 	columnDefaults = {
 		"customWeekdayWidth": 40,
 		"customDayDateGap": 12,
-		"customDateTimeWidth": 110,
+		"customDateTimeWidth": 96,
 		"customDateEventGap": 8,
 		"customEventServiceGap": 10,
 		"customServiceWidth": 130,
 		"customServiceRatingGap": 0,
-		"customRatingWidth": 20,
+		"customRatingWidth": 24,
 	}
 
 	def applySkin(self, desktop, parent):
@@ -53,6 +53,7 @@ class CustomEPGList(EPGList):
 		self.skinAttributes = remaining
 		result = EPGList.applySkin(self, desktop, parent)
 		self.l.setFont(2, gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 4))
+		self.l.setFont(3, gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 2))
 		return result
 
 	def recalcEntrySize(self):
@@ -87,18 +88,23 @@ class CustomEPGList(EPGList):
 			if entry[0] == eListboxPythonMultiContent.TYPE_TEXT:
 				entry = list(entry)
 				# Keep secondary columns small; enlarge only the event title.
-				entry[5] = 2 if index in (1, 2) else 1
+				entry[5] = 3 if index in (1, 2) else 1
 				if index == 2:  # Date/time, immediately after the weekday.
 					entry[6] = RT_HALIGN_LEFT | RT_VALIGN_CENTER
 				if entry[-1] == title and self.descr_rect.x <= entry[1] < self.service_rect.x:
 					entry[5] = 2
 					entry[3] = max(0, self.descr_rect.x + self.sidesMargin + self.descr_rect.w - entry[1])
+				if index in (1, 2):		# day, date/time
+					entry.extend([None] * max(0, 10 - len(entry)))
+					entry[8] = 0x00d0d0d0	# row: gray
+					entry[9] = None		# selected row: color from skin
+				elif (self.sorting == 2 and entry[1] == self.rating_rect.x + self.sidesMargin):	# rating
+					entry.extend([None] * max(0, 10 - len(entry)))
+					entry[8] = 0x000080b0	# rating: blue light
+					entry[9] = None		# selected row: color from skin
 				row[index] = tuple(entry)
 		r = self.service_rect
-		row.append((eListboxPythonMultiContent.TYPE_TEXT,
-			r.x + self.sidesMargin, r.y, r.w, r.h, 1,
-			RT_HALIGN_LEFT | RT_VALIGN_CENTER,
-			self.service_names.get(service, "<N/A>")))
+		row.append((eListboxPythonMultiContent.TYPE_TEXT, r.x + self.sidesMargin, r.y, r.w, r.h, 1, RT_HALIGN_LEFT | RT_VALIGN_CENTER, self.service_names.get(service, "<N/A>"),0x00d0d0d0, None)) # service
 		return row
 
 	def reload(self, references, sorting=0, filtering=0):
