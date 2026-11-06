@@ -43,7 +43,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		for entry in self.entries:
 			entry[1].save()
 		configfile.save()
-		syncExtensionsMenu()
+		self.refreshPlugins()
 		self.close(True)
 
 	def keyCancel(self):
@@ -58,3 +58,9 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 			for entry in self.entries:
 				entry[1].cancel()
 			self.close(False)
+
+	def refreshPlugins(self):
+		from Components.PluginComponent import plugins
+		from Tools.Directories import SCOPE_PLUGINS, resolveFilename
+		plugins.clearPluginList()
+		plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))

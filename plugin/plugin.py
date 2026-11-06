@@ -15,22 +15,6 @@ def extensionsMain(session, **kwargs):
 	main(session, **kwargs)
 
 
-def syncExtensionsMenu():
-	from os.path import dirname
-	from Components.PluginComponent import plugins
-	entries = [p for p in plugins.getPlugins(PluginDescriptor.WHERE_EXTENSIONSMENU)
-		if p.fnc is extensionsMain]
-	if cfg.extensionsmenu.value:
-		if not entries:
-			entry = PluginDescriptor(name="CustomEPG", description=_("EPG for selected services"),
-				where=PluginDescriptor.WHERE_EXTENSIONSMENU, icon="custepg.png", fnc=extensionsMain, needsRestart=False)
-			entry.updateIcon(dirname(__file__))
-			plugins.addPlugin(entry)
-	else:
-		for entry in entries:
-			plugins.removePlugin(entry)
-
-
 def Plugins(**kwargs):
 	name="CustomEPG"
 	descr=_("EPG for selected services")
