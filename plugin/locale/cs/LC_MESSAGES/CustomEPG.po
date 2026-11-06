@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 21:22+0100\n"
-"PO-Revision-Date: 2026-11-05 21:38+0100\n"
+"POT-Creation-Date: 2026-11-06 06:53+0100\n"
+"PO-Revision-Date: 2026-11-06 06:58+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -17,19 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.10\n"
 
-#: ../services.py:73
+#: ../services.py:81
 msgid "Add"
 msgstr "Přidat"
 
-#: ../services.py:70
+#: ../settings.py:31
+msgid "Alphabetical sorting"
+msgstr "Abecední třídění"
+
+#: ../settings.py:31
+msgid "Applies immediately to A-Z only. Standard disables character conversion."
+msgstr "Projeví se ihned pouze při řazení A–Z. Volba Standard vypíná převod znaků."
+
+#: ../configuration.py:9
+msgid "CS/SK"
+msgstr ""
+
+#: ../services.py:78
 msgid "Cancel"
 msgstr ""
 
-#: ../epg.py:173
+#: ../epg.py:183
 msgid "Cannot load CustomEPG settings."
 msgstr "Nastavení pro CustomEPG."
 
-#: ../epg.py:148 ../services.py:92
+#: ../epg.py:158 ../services.py:105
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -38,85 +50,121 @@ msgstr ""
 "Nelze načíst nastavení CustomEPG:\n"
 "%s"
 
-#: ../services.py:136
+#: ../services.py:153
 #, python-format
 msgid ""
 "Cannot save CustomEPG settings:\n"
 "%s"
 msgstr ""
 "Nelze uložit nastavení CustomEPG:\n"
-"%s."
+"%s"
 
-#: ../services.py:142
+#: ../settings.py:52 ../services.py:159
 msgid "Close without saving changes?"
 msgstr "Zavřít bez uložení?"
 
-#: ../services.py:57
+#: ../services.py:61
 msgid "CustomEPG - Services"
 msgstr "CustomEPG - Programy"
 
-#: ../plugin.py:14
+#: ../settings.py:29
+msgid "CustomEPG - Settings"
+msgstr "CustomEPG - nastavení"
+
+#: ../epg.py:224
+msgid "CustomEPG settings"
+msgstr "Nastavení pro CustomEPG"
+
+#: ../plugin.py:25 ../plugin.py:36
 msgid "EPG for selected services"
 msgstr "EPG pro zvolené programy"
 
-#: ../epg.py:177
-msgid "No EPG available for the selected services."
-msgstr ""
+#: ../configuration.py:10
+msgid "Latin2"
+msgstr "Latin2"
 
-#: ../epg.py:179
+#: ../configuration.py:11
+msgid "Latin2 with 'Ch'"
+msgstr "Latin2 s 'Ch'"
+
+#: ../epg.py:187
+msgid "No EPG available for the selected services."
+msgstr "Pro vybrané stanice nejsou k dispozici žádné EPG údaje."
+
+#: ../epg.py:189
 msgid "No events match the time filter."
 msgstr ""
 
-#: ../services.py:103
+#: ../services.py:116
 msgid "Press BLUE to add a service from a bouquet."
-msgstr ""
+msgstr "Pro přidání programu z přehledu stiskněte Modré."
 
-#: ../epg.py:175
+#: ../epg.py:185
 msgid "Press BLUE to select services."
-msgstr ""
+msgstr "Stiskněte Modré pro přidání programů."
 
-#: ../epg.py:168
+#: ../epg.py:178
 msgid "Rating"
 msgstr "Věk"
 
-#: ../epg.py:126 ../epg.py:228
+#: ../epg.py:136 ../epg.py:278
 msgid "Refresh"
 msgstr ""
 
-#: ../services.py:72
+#: ../services.py:80
 msgid "Remove"
 msgstr ""
 
-#: ../services.py:71
+#: ../services.py:79
 msgid "Save"
 msgstr ""
 
-#: ../services.py:31
+#: ../epg.py:229
+msgid "Select action"
+msgstr ""
+
+#: ../services.py:34
 msgid "Select service for CustomEPG"
 msgstr "Vyberte program pro CustomEPG"
 
-#: ../epg.py:125
+#: ../epg.py:135
 msgid "Services"
 msgstr "Programy"
 
-#: ../services.py:103
+#: ../services.py:116
 #, python-format
 msgid "Services: %d"
 msgstr "Programy: %d"
 
-#: ../epg.py:181
+#: ../epg.py:191
 #, python-format
 msgid "Services: %d | Events: %d"
 msgstr "Programy: %d | pořady: %d"
 
-#: ../services.py:131
+#: ../services.py:148
 msgid "Settings could not be loaded. Fix the settings file before saving."
-msgstr ""
+msgstr "Nastavení se nepodařilo načíst. Před uložením opravte soubor s nastavením."
 
-#: ../services.py:116
+#: ../settings.py:32
+msgid "Show CustomEPG in the extensions menu. Takes effect immediately after saving."
+msgstr "Zobrazovat CustomEPG v nabídce rozšíření. Změna se projeví ihned po uložení."
+
+#: ../settings.py:32
+msgid "Show in extensions menu"
+msgstr "Zobrazovat v menu rozšíření"
+
+#: ../configuration.py:8
+msgid "Standard"
+msgstr "Standardní"
+
+#: ../services.py:133
 msgid "This service is already selected."
+msgstr "Tento program je již vybrán."
+
+#: ../epg.py:178
+msgid "Time"
 msgstr ""
 
-#: ../epg.py:168
-msgid "Time"
+#: ../epg.py:222
+msgid "Timer Overview"
 msgstr ""
