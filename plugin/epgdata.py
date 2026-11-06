@@ -24,9 +24,12 @@ def collect_events(query, references, begin):
 	return result
 
 
-def sort_events(rows, sorting, rating=None):
+def sort_events(rows, sorting, rating=None, alphabet="standard"):
 	if sorting == 2:
 		return sorted(rows, key=lambda row: (rating(row), row[2], row[0], row[1]))
+	if sorting == 1 and alphabet != "standard":
+		from .sortkeys import alphabetic_key
+		return sorted(rows, key=lambda row: (alphabetic_key(row[4], alphabet), row[2], row[0], row[1]))
 	if sorting == 1:
 		return sorted(rows, key=lambda row: (row[4].lower(), row[2], row[0], row[1]))
 	return sorted(rows, key=lambda row: (row[2], row[4].lower(), row[0], row[1]))

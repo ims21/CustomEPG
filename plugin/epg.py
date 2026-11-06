@@ -1,5 +1,5 @@
 from os.path import exists
-from time import time
+from time import time, perf_counter
 
 from Components.ActionMap import ActionMap
 from Components.EpgList import EPGList, EPG_TYPE_SINGLE, Rect
@@ -11,6 +11,7 @@ from Tools.Directories import SCOPE_CONFIG, resolveFilename
 from enigma import RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, gFont, eLabel, eSize
 
 from . import _
+from .configuration import cfg
 from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
@@ -87,18 +88,27 @@ class CustomEPGList(EPGList):
 	def applyView(self, sorting, filtering, selected=None, now=None):
 		self.sorting = sorting
 		rows = self.filtering_epg(self.all_events, filtering) if filtering else self.all_events
-		self.list = sort_events(rows, sorting, self.getEventRating)
+		self.list = self.sortEvents(rows, sorting)
 		self.l.setList(self.list)
 		self.recalcEntrySize()
 		if self.instance is not None and self.list:
 			self.instance.moveSelectionTo(selection_index(self.list, selected, now))
 		self.selectionChanged()
 
+	def sortEvents(self, rows, sorting):
+		if sorting != 1:
+			return sort_events(rows, sorting, self.getEventRating)
+		start = perf_counter()
+		result = sort_events(rows, sorting, self.getEventRating, cfg.alphabetsort.value)
+		print("[CustomEPG] A-Z sort (%s): %d events, %.1f ms" %
+			(cfg.alphabetsort.value, len(rows), (perf_counter() - start) * 1000))
+		return result
+
 	def sortSingleEPG(self, sorting):
 		# OpenPLi's moveToEventId alone cannot identify a row across multiple services.
 		selected = event_key(self.l.getCurrentSelection())
 		self.sorting = sorting
-		self.list = sort_events(self.list, sorting, self.getEventRating)
+		self.list = self.sortEvents(self.list, sorting)
 		self.recalcEntrySize()
 		self.l.setList(self.list)
 		if self.instance is not None and self.list:
@@ -199,16 +209,56 @@ class CustomEPGSelection(EPGSelection):
 	def setSingleEpgTitle(self):
 		self.updateTitle()
 
+	def furtherOptions(self):
+		from Screens.ChoiceBox import ChoiceBox
+		from Components.PluginComponent import plugins
+		from Plugins.Plugin import PluginDescriptor
+		menu = []
+		event = self["list"].getCurrent()[0]
+		if event:
+			for plugin in plugins.getPlugins(where=PluginDescriptor.WHERE_EVENTINFO):
+				if 'selectedevent' in plugin.fnc.__code__.co_varnames:
+					menu.append((plugin.name, lambda plugin=plugin: self.runPlugin(plugin)))
+		menu.append((_("Timer Overview"), self.openTimerOverview))
+		keys = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "red", "green", "yellow", "blue"] + ["dummy"] * len(menu))[:len(menu)]
+		menu.append((_("CustomEPG settings"), self.openSettings))
+		keys.append("menu")
+		def selected(choice):
+			if choice:
+				choice[1]()
+		self.session.openWithCallback(selected, ChoiceBox, title=_("Select action"), list=menu, keys=keys)
+
+	def openSettings(self):
+		from .settings import CustomEPGSetup
+		self.session.openWithCallback(self.settingsSaved, CustomEPGSetup)
+
+	def settingsSaved(self, saved=False):
+		if saved and self.sort_type == 1:
+			self["list"].sortSingleEPG(self.sort_type)
+			self.updateTitle()
+
 	def blueButtonPressed(self):
+		self.serviceEditorAlphabet = cfg.alphabetsort.value
 		self.session.openWithCallback(self.servicesEdited, CustomEPGServiceEditor)
 
 	def servicesEdited(self, saved=False):
 		if saved:
 			self.reloadEPG()
+		elif getattr(self, "serviceEditorAlphabet", cfg.alphabetsort.value) != cfg.alphabetsort.value:
+			self.settingsSaved(True)
 
 	def zapTo(self):
 		# Red refreshes the shared list; no service is tuned just to read its EPG.
 		self.reloadEPG()
+
+	def prevService(self):
+		# PREV / NEXT in OpenPLi's EPGSelectActions.
+		if self["list"].instance is not None and self["list"].list:
+			self["list"].instance.moveSelectionTo(0)
+
+	def nextService(self):
+		if self["list"].instance is not None and self["list"].list:
+			self["list"].instance.moveSelectionTo(len(self["list"].list) - 1)
 
 	def nextBouquet(self):
 		self["list"].instance.moveSelection(self["list"].instance.pageDown)
