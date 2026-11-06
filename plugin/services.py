@@ -7,11 +7,12 @@ from Components.Pixmap import Pixmap
 from Components.Sources.Boolean import Boolean
 from Components.Sources.StaticText import StaticText
 from Screens.ChannelSelection import SimpleChannelSelection
+from Screens.ChoiceBox import ChoiceBox
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from ServiceReference import ServiceReference
 from Tools.Directories import SCOPE_CONFIG, resolveFilename
-from enigma import eServiceReference
+from enigma import eServiceCenter, eServiceReference
 
 from . import _
 from .storage import load_legacy_services, load_services, save_services
@@ -29,10 +30,45 @@ def service_name(ref):
 
 
 class CustomEPGChannelSelection(SimpleChannelSelection):
-	"""OpenPLi's bouquet/service browser; return only an individual service."""
+	"""Return one service or the individual services of a bouquet."""
 	def __init__(self, session):
 		SimpleChannelSelection.__init__(self, session, _("Select service for CustomEPG"))
 		self.skinName = "SimpleChannelSelection"
+		self["customEPGMenuActions"] = ActionMap(["MenuActions"], {
+			"menu": self.openBouquetMenu,
+		}, -2)
+		self["key_menu"] = StaticText(_("MENU"))
+
+	def compileTitle(self):
+		root = self.getRoot()
+		if root is not None and 'FROM BOUQUET "bouquets.' in root.getPath():
+			self.setTitle(_("OK: open bouquet and select a service, MENU: Import all services"))
+		else:
+			self.setTitle(_("Select service for CustomEPG"))
+
+	def openBouquetMenu(self):
+		ref = self.getCurrentSelection()
+		if (ref is None or not ref.valid() or not ref.flags & eServiceReference.isDirectory
+				or ref.flags & eServiceReference.isGroup or "FROM BOUQUET" not in ref.getPath()):
+			return
+		self.session.openWithCallback(self.bouquetMenuSelected, ChoiceBox,
+			title=service_name(ref),
+			list=[(_("Import all services from '%s'") % service_name(ref), ref)])
+
+	def bouquetMenuSelected(self, choice):
+		if choice is None:
+			return
+		listing = eServiceCenter.getInstance().list(choice[1])
+		if listing is None:
+			return
+		services = []
+		while True:
+			ref = listing.getNext()
+			if not ref.valid():
+				break
+			if selectable(ref):
+				services.append(ref)
+		self.close(services)
 
 	def channelSelected(self):
 		ref = self.getCurrentSelection()
@@ -123,17 +159,27 @@ class CustomEPGServiceEditor(Screen):
 		self.session.openWithCallback(self.serviceSelected, CustomEPGChannelSelection)
 
 	def serviceSelected(self, ref=None):
-		if not selectable(ref):
-			return
 		# compare strings ignore display names; retain the full reference (including IPTV URL).
-		key = ref.toCompareString()
-		for index, (existing, name) in enumerate(self.services):
-			if eServiceReference(existing).toCompareString() == key:
-				self["config"].moveToIndex(index)
-				self.setStatus(_("This service is already selected."))
-				return
-		self.services.append((ref.toString(), service_name(ref)))
-		self.refresh(len(self.services) - 1)
+		refs = ref if isinstance(ref, list) else [ref]
+		indices = {eServiceReference(existing).toCompareString(): index
+			for index, (existing, name) in enumerate(self.services)}
+		first_new = len(self.services)
+		duplicate = None
+		for ref in refs:
+			if not selectable(ref):
+				continue
+			key = ref.toCompareString()
+			if key in indices:
+				if duplicate is None:
+					duplicate = indices[key]
+				continue
+			indices[key] = len(self.services)
+			self.services.append((ref.toString(), service_name(ref)))
+		if len(self.services) > first_new:
+			self.refresh(first_new)
+		elif duplicate is not None:
+			self["config"].moveToIndex(duplicate)
+			self.setStatus(_("This service is already selected."))
 
 	def remove(self):
 		current = self["config"].getCurrent()
