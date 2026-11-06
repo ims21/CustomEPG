@@ -8,7 +8,9 @@ from Components.config import config
 from Screens.EpgSelection import EPGSelection
 from Screens.MessageBox import MessageBox
 from Tools.Directories import SCOPE_CONFIG, resolveFilename
-from enigma import RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, gFont, eLabel, eSize
+from enigma import RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, gFont
+
+from skin import applySkinFactor, parseScale
 
 from . import _
 from .configuration import cfg
@@ -25,34 +27,56 @@ class CustomEPGList(EPGList):
 		self.all_events = []
 		self.service_names = {}
 
+	# Default dimensions use OpenPLi's 720p skin factor. Skin overrides use parseScale.
+	columnDefaults = {
+		"customWeekdayWidth": 40,
+		"customDayDateGap": 12,
+		"customDateTimeWidth": 110,
+		"customDateEventGap": 8,
+		"customEventServiceGap": 10,
+		"customServiceWidth": 130,
+		"customServiceRatingGap": 0,
+		"customRatingWidth": 20,
+	}
+
 	def applySkin(self, desktop, parent):
+		self.columnDimensions = {}
+		remaining = []
+		for name, value in self.skinAttributes or []:
+			if name in self.columnDefaults:
+				try:
+					self.columnDimensions[name] = max(0, parseScale(value))
+				except (TypeError, ValueError):
+					print("[CustomEPG] Invalid skin attribute %s: %s" % (name, value))
+			else:
+				remaining.append((name, value))
+		self.skinAttributes = remaining
 		result = EPGList.applySkin(self, desktop, parent)
 		self.l.setFont(2, gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 4))
 		return result
 
 	def recalcEntrySize(self):
 		EPGList.recalcEntrySize(self)
-		if self.sorting == 2:
-			r = self.rating_rect
-			self.rating_rect = Rect(r.x + 10, r.y, r.w - 10, r.h)
-		# Preserve SingleEPG's weekday/date columns, fonts and row height.
-		# Split only its event area, after any rating column has been reserved.
-		event = self.descr_rect
-		# SingleEPG reserves 60 pixels only in rating mode. Reserve the same
-		# space in every mode so the service and event columns never jump.
-#		if self.sorting != 2:
-#			event = Rect(event.x, event.y, max(0, event.w - 60), event.h)
-		font = gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 4)
-		# Match the date column to the actual enlarged text, instead of leaving
-		# SingleEPG's unused right-aligned space between time and event.
-		date_width = max(eLabel.calculateTextSize(font, "%s%s.%s%s, %s%s:%s%s" % ((digit,) * 8), eSize(2000, event.h), True).width() for digit in "0123456789")
-		gap = max(4, self.datetime_rect.x - self.weekday_rect.x - self.weekday_rect.w)
-		self.datetime_rect.w = date_width
-		event_start = self.datetime_rect.x + date_width + gap
-#		service_width = event.w // 4
-		service_width = event.w // 4 + (6 if self.sorting != 2 else 0)
-		self.descr_rect = Rect(event_start, event.y, max(0, event.x + event.w - service_width - self.colGap - event_start), event.h)
-		self.service_rect = Rect(event.x + event.w - service_width, event.y, service_width, event.h)
+		dimensions = {name: applySkinFactor(value) for name, value in self.columnDefaults.items()}
+		dimensions.update(getattr(self, "columnDimensions", {}))
+		size = self.l.getItemSize()
+		width, height = max(0, size.width() - self.sidesMargin), size.height()
+		# Allocate the fixed columns from either edge; the event takes the remainder.
+		day_width = min(width, dimensions["customWeekdayWidth"])
+		date_x = min(width, day_width + dimensions["customDayDateGap"])
+		date_width = min(width - date_x, dimensions["customDateTimeWidth"])
+		event_x = min(width, date_x + date_width + dimensions["customDateEventGap"])
+		rating_width = min(width - event_x, dimensions["customRatingWidth"]) if self.sorting == 2 else 0
+		rating_x = width - rating_width
+		service_end = max(event_x, rating_x - dimensions["customServiceRatingGap"]) if self.sorting == 2 else width
+		service_width = min(service_end - event_x, dimensions["customServiceWidth"])
+		service_x = service_end - service_width
+		event_width = max(0, service_x - dimensions["customEventServiceGap"] - event_x)
+		self.weekday_rect = Rect(0, 0, day_width, height)
+		self.datetime_rect = Rect(date_x, 0, date_width, height)
+		self.descr_rect = Rect(event_x, 0, event_width, height)
+		self.service_rect = Rect(service_x, 0, service_width, height)
+		self.rating_rect = Rect(rating_x, 0, rating_width, height)
 
 	def buildSingleEntry(self, service, eventId, beginTime, duration, title):
 		row = EPGList.buildSingleEntry(self, service, eventId, beginTime, duration, title)

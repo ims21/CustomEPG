@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 09:02+0100\n"
+"POT-Creation-Date: 2026-11-06 14:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../services.py:81
+#: ../services.py:117
 msgid "Add"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "CS/SK"
 msgstr ""
 
-#: ../services.py:78
+#: ../services.py:114
 msgid "Cancel"
 msgstr ""
 
@@ -41,25 +41,25 @@ msgstr ""
 msgid "Cannot load CustomEPG settings."
 msgstr ""
 
-#: ../epg.py:158 ../services.py:105
+#: ../epg.py:158 ../services.py:141
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
 "%s"
 msgstr ""
 
-#: ../services.py:153
+#: ../services.py:199
 #, python-format
 msgid ""
 "Cannot save CustomEPG settings:\n"
 "%s"
 msgstr ""
 
-#: ../settings.py:51 ../services.py:159
+#: ../settings.py:51 ../services.py:205
 msgid "Close without saving changes?"
 msgstr ""
 
-#: ../services.py:61
+#: ../services.py:97
 msgid "CustomEPG - Services"
 msgstr ""
 
@@ -75,12 +75,21 @@ msgstr ""
 msgid "EPG for selected services"
 msgstr ""
 
+#: ../services.py:56
+#, python-format
+msgid "Import all services from '%s'"
+msgstr ""
+
 #: ../configuration.py:10
 msgid "Latin2"
 msgstr ""
 
 #: ../configuration.py:11
 msgid "Latin2 with 'Ch'"
+msgstr ""
+
+#: ../services.py:40
+msgid "MENU"
 msgstr ""
 
 #: ../epg.py:187
@@ -91,7 +100,11 @@ msgstr ""
 msgid "No events match the time filter."
 msgstr ""
 
-#: ../services.py:116
+#: ../services.py:45
+msgid "OK: open bouquet and select a service, MENU: Import all services"
+msgstr ""
+
+#: ../services.py:152
 msgid "Press BLUE to add a service from a bouquet."
 msgstr ""
 
@@ -103,11 +116,11 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: ../services.py:80
+#: ../services.py:116
 msgid "Remove"
 msgstr ""
 
-#: ../services.py:79
+#: ../services.py:115
 msgid "Save"
 msgstr ""
 
@@ -115,7 +128,7 @@ msgstr ""
 msgid "Select action"
 msgstr ""
 
-#: ../services.py:34
+#: ../services.py:35 ../services.py:47
 msgid "Select service for CustomEPG"
 msgstr ""
 
@@ -123,7 +136,7 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: ../services.py:116
+#: ../services.py:152
 #, python-format
 msgid "Services: %d"
 msgstr ""
@@ -133,7 +146,7 @@ msgstr ""
 msgid "Services: %d | Events: %d"
 msgstr ""
 
-#: ../services.py:148
+#: ../services.py:194
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
@@ -149,7 +162,7 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-#: ../services.py:133
+#: ../services.py:182
 msgid "This service is already selected."
 msgstr ""
 
