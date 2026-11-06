@@ -27,8 +27,8 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self["key_blue"] = StaticText("")
 		self.setTitle(_("CustomEPG - Settings"))
 		self.entries = [
-			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies immediately to A-Z only. Standard disables character conversion.")),
-			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show CustomEPG in the extensions menu. Takes effect immediately after saving.")),
+			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
+			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extensions menu.")),
 		]
 		ConfigListScreen.__init__(self, self.entries, session=session, fullUI=True)
 		self["config"].onSelectionChanged.append(self.selectionChanged)

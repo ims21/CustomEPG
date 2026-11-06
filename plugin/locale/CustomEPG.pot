@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 07:41+0100\n"
+"POT-Creation-Date: 2026-11-06 09:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: ../settings.py:31
+#: ../settings.py:30
 msgid "Alphabetical sorting"
 msgstr ""
 
-#: ../settings.py:31
-msgid "Applies immediately to A-Z only. Standard disables character conversion."
+#: ../settings.py:30
+msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
 msgstr ""
 
 #: ../configuration.py:9
@@ -55,7 +55,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../settings.py:52 ../services.py:159
+#: ../settings.py:51 ../services.py:159
 msgid "Close without saving changes?"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "CustomEPG - Services"
 msgstr ""
 
-#: ../settings.py:29
+#: ../settings.py:28
 msgid "CustomEPG - Settings"
 msgstr ""
 
@@ -137,12 +137,12 @@ msgstr ""
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
-#: ../settings.py:32
-msgid "Show CustomEPG in the extensions menu. Takes effect immediately after saving."
+#: ../settings.py:31
+msgid "Show in extensions menu"
 msgstr ""
 
-#: ../settings.py:32
-msgid "Show in extensions menu"
+#: ../settings.py:31
+msgid "Show plugin 'CustomEPG' in the extensions menu."
 msgstr ""
 
 #: ../configuration.py:8

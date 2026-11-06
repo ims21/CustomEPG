@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 07:41+0100\n"
-"PO-Revision-Date: 2026-11-06 07:42+0100\n"
+"POT-Creation-Date: 2026-11-06 09:02+0100\n"
+"PO-Revision-Date: 2026-11-06 09:03+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -21,13 +21,13 @@ msgstr ""
 msgid "Add"
 msgstr "Přidat"
 
-#: ../settings.py:31
+#: ../settings.py:30
 msgid "Alphabetical sorting"
 msgstr "Abecední třídění"
 
-#: ../settings.py:31
-msgid "Applies immediately to A-Z only. Standard disables character conversion."
-msgstr "Projeví se ihned pouze při řazení A–Z. Volba Standard vypíná převod znaků."
+#: ../settings.py:30
+msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
+msgstr "Projeví se při řazení 'A–Z'. Volba 'Standardní' vypíná převod znaků."
 
 #: ../configuration.py:9
 msgid "CS/SK"
@@ -59,7 +59,7 @@ msgstr ""
 "Nelze uložit nastavení CustomEPG:\n"
 "%s"
 
-#: ../settings.py:52 ../services.py:159
+#: ../settings.py:51 ../services.py:159
 msgid "Close without saving changes?"
 msgstr "Zavřít bez uložení?"
 
@@ -67,7 +67,7 @@ msgstr "Zavřít bez uložení?"
 msgid "CustomEPG - Services"
 msgstr "CustomEPG - Programy"
 
-#: ../settings.py:29
+#: ../settings.py:28
 msgid "CustomEPG - Settings"
 msgstr "CustomEPG - nastavení"
 
@@ -141,13 +141,13 @@ msgstr "Programy: %d | pořady: %d"
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr "Nastavení se nepodařilo načíst. Před uložením opravte soubor s nastavením."
 
-#: ../settings.py:32
-msgid "Show CustomEPG in the extensions menu. Takes effect immediately after saving."
-msgstr "Zobrazovat CustomEPG v nabídce rozšíření. Změna se projeví ihned po uložení."
-
-#: ../settings.py:32
+#: ../settings.py:31
 msgid "Show in extensions menu"
 msgstr "Zobrazovat v menu rozšíření"
+
+#: ../settings.py:31
+msgid "Show plugin 'CustomEPG' in the extensions menu."
+msgstr "Zobrazovat plugin 'CustomEPG' v menu rozšíření."
 
 #: ../configuration.py:8
 msgid "Standard"
