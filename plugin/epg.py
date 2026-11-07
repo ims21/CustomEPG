@@ -81,6 +81,7 @@ class CustomEPGList(EPGList):
 
 	def buildSingleEntry(self, service, eventId, beginTime, duration, title):
 		row = EPGList.buildSingleEntry(self, service, eventId, beginTime, duration, title)
+		ended = beginTime is not None and duration is not None and beginTime + duration <= time()
 		# SingleEPG offsets the event text after timer icons but keeps its full
 		# width. Clip it to our narrower event column so it cannot cover the
 		# service or rating columns.
@@ -91,9 +92,13 @@ class CustomEPGList(EPGList):
 				entry[5] = 3 if index in (1, 2) else 1
 				if index == 2:  # Date/time, immediately after the weekday.
 					entry[6] = RT_HALIGN_LEFT | RT_VALIGN_CENTER
-				if entry[-1] == title and self.descr_rect.x <= entry[1] < self.service_rect.x:
+				if entry[7] == title and self.descr_rect.x <= entry[1] < self.service_rect.x:
 					entry[5] = 2
 					entry[3] = max(0, self.descr_rect.x + self.sidesMargin + self.descr_rect.w - entry[1])
+					if ended: # finished events
+						entry.extend([None] * max(0, 10 - len(entry)))
+						entry[8] = 0x00777777
+						entry[9] = None
 				if index in (1, 2):		# day, date/time
 					entry.extend([None] * max(0, 10 - len(entry)))
 					entry[8] = 0x00d0d0d0	# row: gray
@@ -163,7 +168,7 @@ class CustomEPGSelection(EPGSelection):
 		self["status"] = StaticText()
 		self["list"] = CustomEPGList(self.onSelectionChanged, session.nav.RecordTimer)
 		self["key_blue"].setText(_("Services"))
-		self["key_red"].setText(_("Refresh"))
+		self["key_red"].setText(_("Zap"))
 		self.custom_ready = True
 		self.onShown.append(self.refreshTimerIcons)
 		# FallbackTimerList can defer onCreate until remote timers arrive.
@@ -226,7 +231,7 @@ class CustomEPGSelection(EPGSelection):
 
 	def yellowButtonPressed(self):
 		self.sort_type = (self.sort_type + 1) % (3 if config.epg.ratingsort.value else 2)
-		self["list"].sortSingleEPG(self.sort_type)
+		self["list"].reload(self.references, self.sort_type, self.filtering)
 		self.setSortDescription()
 		self.updateTitle()
 
@@ -278,8 +283,10 @@ class CustomEPGSelection(EPGSelection):
 			self.settingsSaved(True)
 
 	def zapTo(self):
-		# Red refreshes the shared list; no service is tuned just to read its EPG.
-		self.reloadEPG()
+		cur = self["list"].getCurrent()
+		if cur and cur[1]:
+			self.session.nav.playService(cur[1].ref)
+			self.close(True)
 
 	def prevService(self):
 		# PREV / NEXT in OpenPLi's EPGSelectActions.
@@ -305,4 +312,4 @@ class CustomEPGSelection(EPGSelection):
 		self.refreshTimerIcons()
 		cur = self["list"].getCurrent()
 		self["Service"].newService(cur[1].ref if cur and cur[1] else None)
-		self["key_red"].setText(_("Refresh"))
+		self["key_red"].setText(_("Zap") if cur and cur[1] else "")
