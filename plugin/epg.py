@@ -123,6 +123,9 @@ class CustomEPGList(EPGList):
 	def applyView(self, sorting, filtering, selected=None, now=None):
 		self.sorting = sorting
 		rows = self.filtering_epg(self.all_events, filtering) if filtering else self.all_events
+		if cfg.hide_started.value:
+			current_time = int(time())
+			rows = [row for row in rows if row[2] is not None and row[2] >= current_time]
 		self.list = self.sortEvents(rows, sorting)
 		self.l.setList(self.list)
 		self.recalcEntrySize()
@@ -268,18 +271,19 @@ class CustomEPGSelection(EPGSelection):
 		self.session.openWithCallback(self.settingsSaved, CustomEPGSetup)
 
 	def settingsSaved(self, saved=False):
-		if saved and self.sort_type == 1:
-			self["list"].sortSingleEPG(self.sort_type)
-			self.updateTitle()
+		if saved:
+			self.reloadEPG()
 
 	def blueButtonPressed(self):
 		self.serviceEditorAlphabet = cfg.alphabetsort.value
+		self.serviceEditorHideStarted = cfg.hide_started.value
 		self.session.openWithCallback(self.servicesEdited, CustomEPGServiceEditor)
 
 	def servicesEdited(self, saved=False):
 		if saved:
 			self.reloadEPG()
-		elif getattr(self, "serviceEditorAlphabet", cfg.alphabetsort.value) != cfg.alphabetsort.value:
+		elif (getattr(self, "serviceEditorAlphabet", cfg.alphabetsort.value) != cfg.alphabetsort.value
+				or getattr(self, "serviceEditorHideStarted", cfg.hide_started.value) != cfg.hide_started.value):
 			self.settingsSaved(True)
 
 	def zapTo(self):

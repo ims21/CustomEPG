@@ -27,6 +27,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self["key_blue"] = StaticText("")
 		self.setTitle(_("CustomEPG - Settings"))
 		self.entries = [
+			getConfigListEntry(_("Do not show past and ongoing event"), cfg.hide_started, _("Show only programmes starting now or later.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
 			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extensions menu.")),
 		]

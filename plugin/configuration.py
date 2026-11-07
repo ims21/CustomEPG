@@ -11,4 +11,5 @@ config.plugins.customepg.alphabetsort = ConfigSelection(default="standard", choi
 	("latin2-ch", _("Latin2 with 'Ch'")),
 ])
 config.plugins.customepg.extensionsmenu = ConfigYesNo(default=True)
+config.plugins.customepg.hide_started = ConfigYesNo(default=True)
 cfg = config.plugins.customepg
