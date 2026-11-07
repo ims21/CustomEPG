@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 14:28+0100\n"
+"POT-Creation-Date: 2026-11-07 19:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: ../settings.py:30
+#: ../settings.py:31
 msgid "Alphabetical sorting"
 msgstr ""
 
-#: ../settings.py:30
+#: ../settings.py:31
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
 msgstr ""
 
@@ -37,11 +37,11 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../epg.py:183
+#: ../epg.py:221
 msgid "Cannot load CustomEPG settings."
 msgstr ""
 
-#: ../epg.py:158 ../services.py:141
+#: ../epg.py:196 ../services.py:141
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -55,7 +55,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../settings.py:51 ../services.py:205
+#: ../settings.py:52 ../services.py:205
 msgid "Close without saving changes?"
 msgstr ""
 
@@ -67,8 +67,12 @@ msgstr ""
 msgid "CustomEPG - Settings"
 msgstr ""
 
-#: ../epg.py:224
+#: ../epg.py:262
 msgid "CustomEPG settings"
+msgstr ""
+
+#: ../settings.py:30
+msgid "Do not show past and ongoing event"
 msgstr ""
 
 #: ../plugin.py:20
@@ -92,11 +96,11 @@ msgstr ""
 msgid "MENU"
 msgstr ""
 
-#: ../epg.py:187
+#: ../epg.py:225
 msgid "No EPG available for the selected services."
 msgstr ""
 
-#: ../epg.py:189
+#: ../epg.py:227
 msgid "No events match the time filter."
 msgstr ""
 
@@ -108,12 +112,8 @@ msgstr ""
 msgid "Press BLUE to add a service from a bouquet."
 msgstr ""
 
-#: ../epg.py:185
+#: ../epg.py:223
 msgid "Press BLUE to select services."
-msgstr ""
-
-#: ../epg.py:136 ../epg.py:278
-msgid "Refresh"
 msgstr ""
 
 #: ../services.py:116
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../epg.py:229
+#: ../epg.py:267
 msgid "Select action"
 msgstr ""
 
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Select service for CustomEPG"
 msgstr ""
 
-#: ../epg.py:135
+#: ../epg.py:173
 msgid "Services"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Services: %d"
 msgstr ""
 
-#: ../epg.py:191
+#: ../epg.py:229
 #, python-format
 msgid "Services: %d | Events: %d"
 msgstr ""
@@ -150,11 +150,15 @@ msgstr ""
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
-#: ../settings.py:31
+#: ../settings.py:32
 msgid "Show in extensions menu"
 msgstr ""
 
-#: ../settings.py:31
+#: ../settings.py:30
+msgid "Show only programmes starting now or later."
+msgstr ""
+
+#: ../settings.py:32
 msgid "Show plugin 'CustomEPG' in the extensions menu."
 msgstr ""
 
@@ -166,14 +170,18 @@ msgstr ""
 msgid "This service is already selected."
 msgstr ""
 
-#: ../epg.py:222
+#: ../epg.py:260
 msgid "Timer Overview"
 msgstr ""
 
-#: ../epg.py:178
+#: ../epg.py:174 ../epg.py:319
+msgid "Zap"
+msgstr ""
+
+#: ../epg.py:216
 msgid "by rating"
 msgstr ""
 
-#: ../epg.py:178
+#: ../epg.py:216
 msgid "by time"
 msgstr ""
