@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 08:08+0100\n"
-"PO-Revision-Date: 2026-11-08 08:18+0100\n"
+"POT-Creation-Date: 2026-11-08 09:12+0100\n"
+"PO-Revision-Date: 2026-11-08 09:11+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.10\n"
 
-#: ../services.py:117
+#: ../services.py:118
 msgid "Add"
 msgstr "Přidat"
 
@@ -33,15 +33,24 @@ msgstr "Projeví se při řazení 'A–Z'. Volba 'Standardní' vypíná převod 
 msgid "CS/SK"
 msgstr ""
 
-#: ../services.py:114
+#: ../services.py:115
 msgid "Cancel"
 msgstr ""
 
-#: ../epg.py:221
+#: ../services.py:169
+#, python-format
+msgid ""
+"Cannot access service list:\n"
+"%s"
+msgstr ""
+"Operace se seznamem programů se nezdařila:\n"
+"%s"
+
+#: ../ui.py:222
 msgid "Cannot load CustomEPG settings."
 msgstr "Nastavení pro CustomEPG."
 
-#: ../epg.py:196 ../services.py:141
+#: ../ui.py:197 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -50,7 +59,7 @@ msgstr ""
 "Nelze načíst nastavení CustomEPG:\n"
 "%s"
 
-#: ../services.py:199
+#: ../services.py:287
 #, python-format
 msgid ""
 "Cannot save CustomEPG settings:\n"
@@ -59,7 +68,7 @@ msgstr ""
 "Nelze uložit nastavení CustomEPG:\n"
 "%s"
 
-#: ../settings.py:54 ../services.py:205
+#: ../settings.py:54 ../services.py:293
 msgid "Close without saving changes?"
 msgstr "Zavřít bez uložení?"
 
@@ -67,17 +76,27 @@ msgstr "Zavřít bez uložení?"
 msgid "CustomEPG"
 msgstr "CustomEPG"
 
-#: ../services.py:97
+#: ../services.py:97 ../services.py:157
 msgid "CustomEPG - Services"
 msgstr "CustomEPG - Programy"
 
-#: ../settings.py:28
-msgid "CustomEPG - Settings"
-msgstr "CustomEPG - nastavení"
-
-#: ../epg.py:262
+#: ../ui.py:263 ../services.py:161
 msgid "CustomEPG settings"
 msgstr "Nastavení CustomEPG"
+
+#: ../settings.py:28
+#, python-format
+msgid "CustomEPG v%s - Settings"
+msgstr "CustomEPG v%s - nastavení"
+
+#: ../services.py:160 ../services.py:229
+msgid "Delete list"
+msgstr "Smazat seznam"
+
+#: ../services.py:234
+#, python-format
+msgid "Delete list '%s'?"
+msgstr "Opravdu smazat seznam '%s'?"
 
 #: ../settings.py:30
 msgid "Do not show past and ongoing event"
@@ -100,61 +119,87 @@ msgstr "Latin2"
 msgid "Latin2 with 'Ch'"
 msgstr "Latin2 s 'Ch'"
 
-#: ../services.py:40
+#: ../services.py:174
+msgid "List name"
+msgstr "Název pro seznam"
+
+#: ../services.py:159 ../services.py:210
+msgid "Load list"
+msgstr "Načíst seznam"
+
+#: ../services.py:41
 msgid "MENU"
 msgstr ""
 
-#: ../epg.py:225
+#: ../ui.py:226
 msgid "No EPG available for the selected services."
 msgstr "Pro vybrané stanice nejsou k dispozici žádné EPG údaje."
 
-#: ../epg.py:227
+#: ../ui.py:228
 msgid "No events match the time filter."
-msgstr ""
+msgstr "Žádné události neodpovídají časovému filtru."
 
-#: ../services.py:45
+#: ../services.py:207
+msgid "No saved service lists."
+msgstr "Žádný uložený seznam."
+
+#: ../services.py:46
 msgid "OK: open bouquet and select a service, MENU: Import all services"
 msgstr "OK: otevřít přehled a vybrat program, MENU: importovat všechny programy"
 
-#: ../services.py:152
+#: ../services.py:187
+#, python-format
+msgid "Overwrite list '%s'?"
+msgstr "Přepsat seznam %s?"
+
+#: ../services.py:153
 msgid "Press BLUE to add a service from a bouquet."
 msgstr "Pro přidání programu z přehledu stiskněte Modré."
 
-#: ../epg.py:223
+#: ../ui.py:224
 msgid "Press BLUE to select services."
 msgstr "Stiskněte Modré pro přidání programů."
 
-#: ../services.py:116
+#: ../services.py:117
 msgid "Remove"
-msgstr ""
+msgstr "Smazat"
 
-#: ../services.py:115
+#: ../services.py:216
+#, python-format
+msgid "Replace the current selection with list '%s'?"
+msgstr "Nahradit aktuální výběr seznamem '%s'?"
+
+#: ../services.py:116
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
-#: ../epg.py:267
+#: ../services.py:158
+msgid "Save as list"
+msgstr "Uložit jako seznam"
+
+#: ../ui.py:268
 msgid "Select action"
 msgstr ""
 
-#: ../services.py:35 ../services.py:47
+#: ../services.py:36 ../services.py:48
 msgid "Select service for CustomEPG"
 msgstr "Vyberte program pro CustomEPG"
 
-#: ../epg.py:173
+#: ../ui.py:174
 msgid "Services"
 msgstr "Programy"
 
-#: ../services.py:152
+#: ../services.py:153
 #, python-format
 msgid "Services: %d"
 msgstr "Programy: %d"
 
-#: ../epg.py:229
+#: ../ui.py:230
 #, python-format
 msgid "Services: %d | Events: %d"
 msgstr "Programy: %d | pořady: %d"
 
-#: ../services.py:194
+#: ../services.py:282
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr "Nastavení se nepodařilo načíst. Před uložením opravte soubor s nastavením."
 
@@ -190,22 +235,22 @@ msgstr "Zobrazovat plugin 'CustomEPG' v menu rozšíření."
 msgid "Standard"
 msgstr "Standardní"
 
-#: ../services.py:182
+#: ../services.py:270
 msgid "This service is already selected."
 msgstr "Tento program je již vybrán."
 
-#: ../epg.py:260
+#: ../ui.py:261
 msgid "Timer Overview"
 msgstr ""
 
-#: ../epg.py:174 ../epg.py:319
+#: ../ui.py:175 ../ui.py:320
 msgid "Zap"
-msgstr ""
+msgstr "Přepnout"
 
-#: ../epg.py:216
+#: ../ui.py:217
 msgid "by rating"
 msgstr "podle věku"
 
-#: ../epg.py:216
+#: ../ui.py:217
 msgid "by time"
 msgstr "podle času"

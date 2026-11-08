@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 08:08+0100\n"
+"POT-Creation-Date: 2026-11-08 09:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../services.py:117
+#: ../services.py:118
 msgid "Add"
 msgstr ""
 
@@ -33,29 +33,36 @@ msgstr ""
 msgid "CS/SK"
 msgstr ""
 
-#: ../services.py:114
+#: ../services.py:115
 msgid "Cancel"
 msgstr ""
 
-#: ../epg.py:221
+#: ../services.py:169
+#, python-format
+msgid ""
+"Cannot access service list:\n"
+"%s"
+msgstr ""
+
+#: ../ui.py:222
 msgid "Cannot load CustomEPG settings."
 msgstr ""
 
-#: ../epg.py:196 ../services.py:141
+#: ../ui.py:197 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
 "%s"
 msgstr ""
 
-#: ../services.py:199
+#: ../services.py:287
 #, python-format
 msgid ""
 "Cannot save CustomEPG settings:\n"
 "%s"
 msgstr ""
 
-#: ../settings.py:54 ../services.py:205
+#: ../settings.py:54 ../services.py:293
 msgid "Close without saving changes?"
 msgstr ""
 
@@ -63,16 +70,26 @@ msgstr ""
 msgid "CustomEPG"
 msgstr ""
 
-#: ../services.py:97
+#: ../services.py:97 ../services.py:157
 msgid "CustomEPG - Services"
 msgstr ""
 
-#: ../settings.py:28
-msgid "CustomEPG - Settings"
+#: ../ui.py:263 ../services.py:161
+msgid "CustomEPG settings"
 msgstr ""
 
-#: ../epg.py:262
-msgid "CustomEPG settings"
+#: ../settings.py:28
+#, python-format
+msgid "CustomEPG v%s - Settings"
+msgstr ""
+
+#: ../services.py:160 ../services.py:229
+msgid "Delete list"
+msgstr ""
+
+#: ../services.py:234
+#, python-format
+msgid "Delete list '%s'?"
 msgstr ""
 
 #: ../settings.py:30
@@ -96,61 +113,87 @@ msgstr ""
 msgid "Latin2 with 'Ch'"
 msgstr ""
 
-#: ../services.py:40
+#: ../services.py:174
+msgid "List name"
+msgstr ""
+
+#: ../services.py:159 ../services.py:210
+msgid "Load list"
+msgstr ""
+
+#: ../services.py:41
 msgid "MENU"
 msgstr ""
 
-#: ../epg.py:225
+#: ../ui.py:226
 msgid "No EPG available for the selected services."
 msgstr ""
 
-#: ../epg.py:227
+#: ../ui.py:228
 msgid "No events match the time filter."
 msgstr ""
 
-#: ../services.py:45
+#: ../services.py:207
+msgid "No saved service lists."
+msgstr ""
+
+#: ../services.py:46
 msgid "OK: open bouquet and select a service, MENU: Import all services"
 msgstr ""
 
-#: ../services.py:152
+#: ../services.py:187
+#, python-format
+msgid "Overwrite list '%s'?"
+msgstr ""
+
+#: ../services.py:153
 msgid "Press BLUE to add a service from a bouquet."
 msgstr ""
 
-#: ../epg.py:223
+#: ../ui.py:224
 msgid "Press BLUE to select services."
 msgstr ""
 
-#: ../services.py:116
+#: ../services.py:117
 msgid "Remove"
 msgstr ""
 
-#: ../services.py:115
+#: ../services.py:216
+#, python-format
+msgid "Replace the current selection with list '%s'?"
+msgstr ""
+
+#: ../services.py:116
 msgid "Save"
 msgstr ""
 
-#: ../epg.py:267
+#: ../services.py:158
+msgid "Save as list"
+msgstr ""
+
+#: ../ui.py:268
 msgid "Select action"
 msgstr ""
 
-#: ../services.py:35 ../services.py:47
+#: ../services.py:36 ../services.py:48
 msgid "Select service for CustomEPG"
 msgstr ""
 
-#: ../epg.py:173
+#: ../ui.py:174
 msgid "Services"
 msgstr ""
 
-#: ../services.py:152
+#: ../services.py:153
 #, python-format
 msgid "Services: %d"
 msgstr ""
 
-#: ../epg.py:229
+#: ../ui.py:230
 #, python-format
 msgid "Services: %d | Events: %d"
 msgstr ""
 
-#: ../services.py:194
+#: ../services.py:282
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
@@ -186,22 +229,22 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-#: ../services.py:182
+#: ../services.py:270
 msgid "This service is already selected."
 msgstr ""
 
-#: ../epg.py:260
+#: ../ui.py:261
 msgid "Timer Overview"
 msgstr ""
 
-#: ../epg.py:174 ../epg.py:319
+#: ../ui.py:175 ../ui.py:320
 msgid "Zap"
 msgstr ""
 
-#: ../epg.py:216
+#: ../ui.py:217
 msgid "by rating"
 msgstr ""
 
-#: ../epg.py:216
+#: ../ui.py:217
 msgid "by time"
 msgstr ""

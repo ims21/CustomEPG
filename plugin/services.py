@@ -212,12 +212,9 @@ class CustomEPGServiceEditor(Screen):
 	def loadListSelected(self, choice):
 		if not choice:
 			return
-		if self.services != self.original:
-			self.session.openWithCallback(lambda answer: self.loadNamedList(choice[1]) if answer else None,
-				MessageBox, _("Replace the current selection with list '%s'?") % choice[1],
-				MessageBox.TYPE_YESNO, default=False)
-		else:
-			self.loadNamedList(choice[1])
+		self.session.openWithCallback(lambda answer: self.loadNamedList(choice[1]) if answer else None,
+			MessageBox, _("Replace the current selection with list '%s'?") % choice[1],
+			MessageBox.TYPE_YESNO, default=False)
 
 	def loadNamedList(self, name):
 		try:
