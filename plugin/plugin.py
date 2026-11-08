@@ -5,7 +5,7 @@ from .configuration import cfg
 
 
 def main(session, **kwargs):
-	from .epg import CustomEPGSelection
+	from .ui import CustomEPGSelection
 	session.open(CustomEPGSelection)
 
 

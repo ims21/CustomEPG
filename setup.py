@@ -3,7 +3,7 @@ import setup_translate
 
 pkg = 'Extensions.CustomEPG'
 setup (name = 'enigma2-plugin-extensions-customepg',
-	version = '0.4',
+	version = '0.5',
 	description = 'EPG for selected services',
 	packages = [pkg],
 	package_dir = {pkg: 'plugin'},

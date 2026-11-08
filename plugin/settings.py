@@ -8,7 +8,7 @@ from Screens.MessageBox import MessageBox
 
 from . import _
 from .configuration import cfg
-
+from .ui import VERSION
 
 class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 	skin = """<screen name="CustomEPGSetup" position="center,center" size="600,300" title="CustomEPG - Settings">
@@ -25,7 +25,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self["description"] = Label()
 		self["key_yellow"] = StaticText("")
 		self["key_blue"] = StaticText("")
-		self.setTitle(_("CustomEPG - Settings"))
+		self.setTitle(_("CustomEPG v%s - Settings") % VERSION)
 		self.entries = [
 			getConfigListEntry(_("Do not show past and ongoing event"), cfg.hide_started, _("Show only programmes starting now or later.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),

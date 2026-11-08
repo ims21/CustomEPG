@@ -16,6 +16,7 @@ from enigma import eServiceCenter, eServiceReference
 
 from . import _
 from .storage import load_legacy_services, load_services, save_services
+from .servicelists import list_path, list_names, save_list, load_list, delete_list
 
 
 def selectable(ref):
@@ -52,8 +53,7 @@ class CustomEPGChannelSelection(SimpleChannelSelection):
 				or ref.flags & eServiceReference.isGroup or "FROM BOUQUET" not in ref.getPath()):
 			return
 		self.session.openWithCallback(self.bouquetMenuSelected, ChoiceBox,
-			title=service_name(ref),
-			list=[(_("Import all services from '%s'") % service_name(ref), ref)])
+			title=service_name(ref), list=[(_("Import all services from '%s'") % service_name(ref), ref)])
 
 	def bouquetMenuSelected(self, choice):
 		if choice is None:
@@ -100,6 +100,7 @@ class CustomEPGServiceEditor(Screen):
 		self["HelpWindow"].hide()
 		self["VKeyIcon"] = Boolean(False)
 		self.path = resolveFilename(SCOPE_CONFIG, "customepg.xml")
+		self.lists_directory = resolveFilename(SCOPE_CONFIG, "customepg_lists")
 		self.load_error = None
 		try:
 			if exists(self.path):
@@ -123,7 +124,7 @@ class CustomEPGServiceEditor(Screen):
 			"green": self.save,
 			"yellow": self.remove,
 			"blue": self.add,
-			"menu": self.openSettings,
+			"menu": self.openMenu,
 			"up": self["config"].up,
 			"down": self["config"].down,
 			"left": self["config"].pageUp,
@@ -150,6 +151,96 @@ class CustomEPGServiceEditor(Screen):
 		if rows:
 			self["config"].moveToIndex(min(index, len(rows) - 1))
 		self.setStatus(_("Services: %d") % len(rows) if rows else _("Press BLUE to add a service from a bouquet."))
+
+	def openMenu(self):
+		self.session.openWithCallback(self.menuSelected, ChoiceBox,
+			title=_("CustomEPG - Services"), list=[
+				(_("Save as list"), self.saveAsList),
+				(_("Load list"), self.chooseLoadList),
+				(_("Delete list"), self.chooseDeleteList),
+				(_("CustomEPG settings"), self.openSettings),
+			], keys=["1", "2", "3", "menu"])
+
+	def menuSelected(self, choice):
+		if choice:
+			choice[1]()
+
+	def listError(self, error):
+		self.session.open(MessageBox, _("Cannot access service list:\n%s") % error, MessageBox.TYPE_ERROR)
+
+	def saveAsList(self):
+		from Screens.VirtualKeyBoard import VirtualKeyBoard
+		self.session.openWithCallback(self.listNameEntered, VirtualKeyBoard,
+			title=_("List name"), text="")
+
+	def listNameEntered(self, name):
+		if name is None:
+			return
+		name = name.strip()
+		try:
+			path = list_path(self.lists_directory, name)
+		except ValueError as error:
+			self.listError(error)
+			return
+		if exists(path):
+			self.session.openWithCallback(lambda answer: self.saveNamedList(name) if answer else None,
+				MessageBox, _("Overwrite list '%s'?") % name, MessageBox.TYPE_YESNO, default=False)
+		else:
+			self.saveNamedList(name)
+
+	def saveNamedList(self, name):
+		try:
+			save_list(self.lists_directory, name, self.services)
+		except (OSError, ValueError) as error:
+			self.listError(error)
+
+	def chooseList(self, callback, title):
+		try:
+			names = list_names(self.lists_directory)
+		except OSError as error:
+			self.listError(error)
+			return
+		if names:
+			self.session.openWithCallback(callback, ChoiceBox, title=title,
+				list=[(name, name) for name in names])
+		else:
+			self.session.open(MessageBox, _("No saved service lists."), MessageBox.TYPE_INFO)
+
+	def chooseLoadList(self):
+		self.chooseList(self.loadListSelected, _("Load list"))
+
+	def loadListSelected(self, choice):
+		if not choice:
+			return
+		if self.services != self.original:
+			self.session.openWithCallback(lambda answer: self.loadNamedList(choice[1]) if answer else None,
+				MessageBox, _("Replace the current selection with list '%s'?") % choice[1],
+				MessageBox.TYPE_YESNO, default=False)
+		else:
+			self.loadNamedList(choice[1])
+
+	def loadNamedList(self, name):
+		try:
+			services = load_list(self.lists_directory, name)
+		except (OSError, ValueError) as error:
+			self.listError(error)
+			return
+		self.services = services
+		self.refresh()
+
+	def chooseDeleteList(self):
+		self.chooseList(self.deleteListSelected, _("Delete list"))
+
+	def deleteListSelected(self, choice):
+		if choice:
+			self.session.openWithCallback(lambda answer: self.deleteNamedList(choice[1]) if answer else None,
+				MessageBox, _("Delete list '%s'?") % choice[1], MessageBox.TYPE_YESNO, default=False)
+
+	def deleteNamedList(self, name):
+		try:
+			delete_list(self.lists_directory, name)
+		except (OSError, ValueError) as error:
+			self.listError(error)
 
 	def openSettings(self):
 		from .settings import CustomEPGSetup
