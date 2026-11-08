@@ -30,6 +30,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.entries = [
 			getConfigListEntry(_("Hide events"), cfg.hide_started, _("Hide finished events, or both finished and ongoing events.")),
 			getConfigListEntry(_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")),
+			getConfigListEntry(_("Hide events longer than"), cfg.maximum_duration, _("Default setting for the maximum duration of displayed events.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
 			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")),
 			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")),
@@ -43,7 +44,17 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		current = self["config"].getCurrent()
 		self["description"].setText(current[2] if current and len(current) > 2 else "")
 
+	def validDurationRange(self, minimum, maximum):
+		if maximum and minimum > maximum:
+			self.session.open(MessageBox,
+				_("Maximum event duration must not be shorter than minimum event duration."),
+				MessageBox.TYPE_ERROR)
+			return False
+		return True
+
 	def keySave(self):
+		if not self.validDurationRange(int(cfg.minimum_duration.value), int(cfg.maximum_duration.value)):
+			return
 		for entry in self.entries:
 			entry[1].save()
 		configfile.save()
@@ -72,12 +83,15 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 
 class CustomEPGDurationSetup(CustomEPGSetup):
 
-	def __init__(self, session, minutes):
+	def __init__(self, session, minimum, maximum):
 		CustomEPGSetup.__init__(self, session)
-		self.setTitle(_("Minimum event duration - temporary setting"))
-		self.duration = ConfigSelection(default=str(minutes), choices=duration_choices)
+		self.setTitle(_("Event duration - temporary setting"))
+		self.duration = ConfigSelection(default=str(minimum), choices=duration_choices)
+		self.maximum = ConfigSelection(default=str(maximum), choices=duration_choices)
 		self.entries = [
 			getConfigListEntry(_("Hide events shorter than"), self.duration,
+				_("Temporary setting. Applies only until CustomEPG is closed.")),
+			getConfigListEntry(_("Hide events longer than"), self.maximum,
 				_("Temporary setting. Applies only until CustomEPG is closed.")),
 		]
 		self["config"].setList(self.entries)
@@ -89,7 +103,10 @@ class CustomEPGDurationSetup(CustomEPGSetup):
 		self.selectionChanged()
 
 	def keySave(self):
-		self.close(int(self.duration.value))
+		minimum = int(self.duration.value)
+		maximum = int(self.maximum.value)
+		if self.validDurationRange(minimum, maximum):
+			self.close((minimum, maximum))
 
 	def keyCancel(self):
 		self.close(None)

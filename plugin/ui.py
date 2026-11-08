@@ -18,7 +18,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "0.7"
+VERSION = "0.8"
 
 class CustomEPGList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
@@ -28,6 +28,7 @@ class CustomEPGList(EPGList):
 		self.all_events = []
 		self.service_names = {}
 		self.minimum_duration = int(cfg.minimum_duration.value)
+		self.maximum_duration = int(cfg.maximum_duration.value)
 
 	# Default dimensions use OpenPLi's 720p skin factor. Skin overrides use parseScale.
 	columnDefaults = {
@@ -142,6 +143,9 @@ class CustomEPGList(EPGList):
 		if self.minimum_duration:
 			minimum_seconds = self.minimum_duration * 60
 			rows = [row for row in rows if row[3] is not None and row[3] >= minimum_seconds]
+		if self.maximum_duration:
+			maximum_seconds = self.maximum_duration * 60
+			rows = [row for row in rows if row[3] is not None and row[3] <= maximum_seconds]
 		self.list = self.sortEvents(rows, sorting)
 		self.l.setList(self.list)
 		self.recalcEntrySize()
@@ -184,7 +188,7 @@ class CustomEPGSelection(EPGSelection):
 			"blue": self.blueButtonPressed,
 		}, -2)
 		self["durationFilterActions"] = HelpableActionMap(self, "NumberActions", {
-			"5": (self.openDurationFilter, _("Filter by minimum event duration")),
+			"5": (self.openDurationFilter, _("Filter by event duration")),
 		}, -2)
 		self.skinName = ["CustomEPGSelection", "EPGSelection"]
 		self["status"] = StaticText()
@@ -288,12 +292,12 @@ class CustomEPGSelection(EPGSelection):
 	def openDurationFilter(self):
 		from .settings import CustomEPGDurationSetup
 		self.session.openWithCallback(self.durationFilterSelected,
-			CustomEPGDurationSetup, self["list"].minimum_duration)
+			CustomEPGDurationSetup, self["list"].minimum_duration, self["list"].maximum_duration)
 
-	def durationFilterSelected(self, minutes):
-		if minutes is None:
+	def durationFilterSelected(self, limits):
+		if limits is None:
 			return
-		self["list"].minimum_duration = minutes
+		self["list"].minimum_duration, self["list"].maximum_duration = limits
 		selected = event_key(self["list"].l.getCurrentSelection())
 		self["list"].applyView(self.sort_type, self.filtering, selected=selected)
 		self.updateTitle()
@@ -305,6 +309,7 @@ class CustomEPGSelection(EPGSelection):
 	def settingsSaved(self, saved=False):
 		if saved:
 			self["list"].minimum_duration = int(cfg.minimum_duration.value)
+			self["list"].maximum_duration = int(cfg.maximum_duration.value)
 			self.reloadEPG()
 
 	def blueButtonPressed(self):

@@ -11,6 +11,7 @@ config.plugins.customepg.hide_started = ConfigSelection(default="true", choices=
 ])
 duration_choices = [("0", _("Disabled"))] + [(str(minutes), _("%d min") % minutes) for minutes in range(10, 241, 5)]
 config.plugins.customepg.minimum_duration = ConfigSelection(default="0", choices=duration_choices)
+config.plugins.customepg.maximum_duration = ConfigSelection(default="0", choices=duration_choices)
 config.plugins.customepg.alphabetsort = ConfigSelection(default="standard", choices=[
 	("standard", _("Standard")),
 	("czsk", _("CS/SK")),
