@@ -29,7 +29,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.setTitle(_("CustomEPG v%s - Settings") % VERSION)
 		self.entries = [
 			getConfigListEntry(_("Do not show past and ongoing event"), cfg.hide_started, _("Show only programmes starting now or later.")),
-			getConfigListEntry(_("Hide events shorter than"), cfg.minimum_duration, _("Default minimum event duration when opening CustomEPG.")),
+			getConfigListEntry(_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
 			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")),
 			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")),
