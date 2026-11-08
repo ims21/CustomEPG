@@ -29,9 +29,9 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.entries = [
 			getConfigListEntry(_("Do not show past and ongoing event"), cfg.hide_started, _("Show only programmes starting now or later.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
-			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show 'CustomEPG' in the extension menu.")),
-			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show 'CustomEPG' in the event menu.")),
-			getConfigListEntry(_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show 'CustomEPG' in the channel selection context menu.")),
+			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")),
+			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")),
+			getConfigListEntry(_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show plugin 'CustomEPG' in the channel selection context menu.")),
 		]
 		ConfigListScreen.__init__(self, self.entries, session=session, fullUI=True)
 		self["config"].onSelectionChanged.append(self.selectionChanged)

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 19:04+0100\n"
-"PO-Revision-Date: 2026-11-07 19:05+0100\n"
+"POT-Creation-Date: 2026-11-08 08:08+0100\n"
+"PO-Revision-Date: 2026-11-08 08:18+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -59,9 +59,13 @@ msgstr ""
 "Nelze uložit nastavení CustomEPG:\n"
 "%s"
 
-#: ../settings.py:52 ../services.py:205
+#: ../settings.py:54 ../services.py:205
 msgid "Close without saving changes?"
 msgstr "Zavřít bez uložení?"
+
+#: ../plugin.py:19
+msgid "CustomEPG"
+msgstr "CustomEPG"
 
 #: ../services.py:97
 msgid "CustomEPG - Services"
@@ -154,6 +158,14 @@ msgstr "Programy: %d | pořady: %d"
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr "Nastavení se nepodařilo načíst. Před uložením opravte soubor s nastavením."
 
+#: ../settings.py:34
+msgid "Show in channels selection menu"
+msgstr "Zobrazovat v menu výběru kanálů"
+
+#: ../settings.py:33
+msgid "Show in event menu"
+msgstr "Zobrazovat v event menu"
+
 #: ../settings.py:32
 msgid "Show in extensions menu"
 msgstr "Zobrazovat v menu rozšíření"
@@ -162,8 +174,16 @@ msgstr "Zobrazovat v menu rozšíření"
 msgid "Show only programmes starting now or later."
 msgstr "Zobrazují se pouze události začínající nyní nebo později."
 
+#: ../settings.py:34
+msgid "Show plugin 'CustomEPG' in the channel selection context menu."
+msgstr "Zobrazovat plugin 'CustomEPG' v menu výběru kanálů."
+
+#: ../settings.py:33
+msgid "Show plugin 'CustomEPG' in the event menu."
+msgstr "Zobrazovat plugin 'CustomEPG' v event menu."
+
 #: ../settings.py:32
-msgid "Show plugin 'CustomEPG' in the extensions menu."
+msgid "Show plugin 'CustomEPG' in the extension menu."
 msgstr "Zobrazovat plugin 'CustomEPG' v menu rozšíření."
 
 #: ../configuration.py:8

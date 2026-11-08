@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 19:04+0100\n"
+"POT-Creation-Date: 2026-11-08 08:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,8 +55,12 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../settings.py:52 ../services.py:205
+#: ../settings.py:54 ../services.py:205
 msgid "Close without saving changes?"
+msgstr ""
+
+#: ../plugin.py:19
+msgid "CustomEPG"
 msgstr ""
 
 #: ../services.py:97
@@ -150,6 +154,14 @@ msgstr ""
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
+#: ../settings.py:34
+msgid "Show in channels selection menu"
+msgstr ""
+
+#: ../settings.py:33
+msgid "Show in event menu"
+msgstr ""
+
 #: ../settings.py:32
 msgid "Show in extensions menu"
 msgstr ""
@@ -158,8 +170,16 @@ msgstr ""
 msgid "Show only programmes starting now or later."
 msgstr ""
 
+#: ../settings.py:34
+msgid "Show plugin 'CustomEPG' in the channel selection context menu."
+msgstr ""
+
+#: ../settings.py:33
+msgid "Show plugin 'CustomEPG' in the event menu."
+msgstr ""
+
 #: ../settings.py:32
-msgid "Show plugin 'CustomEPG' in the extensions menu."
+msgid "Show plugin 'CustomEPG' in the extension menu."
 msgstr ""
 
 #: ../configuration.py:8
