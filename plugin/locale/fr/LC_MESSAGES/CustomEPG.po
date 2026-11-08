@@ -1,0 +1,247 @@
+# CustomEPG translations.
+# Copyright (C) 2026 CustomEPG contributors
+# This file is distributed under the same license as the CustomEPG package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CustomEPG\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-08 20:11+0100\n"
+"PO-Revision-Date: 2026-11-08 20:27+0100\n"
+"Last-Translator: ims <ims@openpli.org>\n"
+"Language-Team: Français\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#, python-format
+msgid "%d min"
+msgstr "%d min"
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "Alphabetical sorting"
+msgstr "Tri alphabétique"
+
+msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
+msgstr "S'applique uniquement au tri 'A-Z'. 'Standard' désactive la conversion des caractères."
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "CS/SK"
+msgstr "CS/SK"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+#, python-format
+msgid ""
+"Cannot access service list:\n"
+"%s"
+msgstr ""
+"Impossible d'accéder à la liste des chaînes :\n"
+"%s"
+
+msgid "Cannot load CustomEPG settings."
+msgstr "Impossible de charger les paramètres de CustomEPG."
+
+#, python-format
+msgid ""
+"Cannot load CustomEPG settings:\n"
+"%s"
+msgstr ""
+"Impossible de charger les paramètres de CustomEPG :\n"
+"%s"
+
+#, python-format
+msgid ""
+"Cannot save CustomEPG settings:\n"
+"%s"
+msgstr ""
+"Impossible d'enregistrer les paramètres de CustomEPG :\n"
+"%s"
+
+msgid "Close without saving changes?"
+msgstr "Fermer sans enregistrer les modifications ?"
+
+msgid "CustomEPG"
+msgstr "CustomEPG"
+
+msgid "CustomEPG - Services"
+msgstr "CustomEPG - Chaînes"
+
+#, python-format
+msgid "CustomEPG v%s - Settings"
+msgstr "CustomEPG v%s - Paramètres"
+
+msgid "Default setting for the maximum duration of displayed events."
+msgstr "Durée maximale par défaut des émissions affichées."
+
+msgid "Default setting for the minimum duration of displayed events."
+msgstr "Durée minimale par défaut des émissions affichées."
+
+msgid "Delete list"
+msgstr "Supprimer la liste"
+
+#, python-format
+msgid "Delete list '%s'?"
+msgstr "Supprimer la liste '%s' ?"
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "EPG for selected services"
+msgstr "EPG des chaînes sélectionnées"
+
+msgid "Event duration - temporary setting"
+msgstr "Durée des émissions - réglage temporaire"
+
+msgid "Filter by event duration"
+msgstr "Filtrer selon la durée des émissions"
+
+msgid "Finished"
+msgstr "Terminées"
+
+msgid "Finished and ongoing"
+msgstr "Terminées et en cours"
+
+msgid "Hide events"
+msgstr "Masquer des émissions"
+
+msgid "Hide events longer than"
+msgstr "Masquer les émissions de plus de"
+
+msgid "Hide events shorter than"
+msgstr "Masquer les émissions de moins de"
+
+msgid "Hide finished events, or both finished and ongoing events."
+msgstr "Masquer les émissions terminées ou celles terminées et en cours."
+
+#, python-format
+msgid "Import all services from '%s'"
+msgstr "Importer toutes les chaînes de '%s'"
+
+msgid "Latin2"
+msgstr "Latin2"
+
+msgid "Latin2 with 'Ch'"
+msgstr "Latin2 avec 'Ch'"
+
+msgid "List name"
+msgstr "Nom de la liste"
+
+msgid "Load list"
+msgstr "Charger une liste"
+
+msgid "MENU"
+msgstr "MENU"
+
+msgid "Maximum event duration must not be shorter than minimum event duration."
+msgstr "La durée maximale ne peut pas être inférieure à la durée minimale des émissions."
+
+msgid "No"
+msgstr "Non"
+
+msgid "No EPG available for the selected services."
+msgstr "Aucune donnée EPG disponible pour les chaînes sélectionnées."
+
+msgid "No events match the time filter."
+msgstr "Aucune émission ne correspond au filtre horaire."
+
+msgid "No saved service lists."
+msgstr "Aucune liste de chaînes enregistrée."
+
+msgid "OK: open bouquet and select a service, MENU: Import all services"
+msgstr "OK : ouvrir un bouquet et choisir une chaîne, MENU : importer toutes les chaînes"
+
+#, python-format
+msgid "Overwrite list '%s'?"
+msgstr "Écraser la liste '%s' ?"
+
+msgid "Press BLUE to add a service from a bouquet."
+msgstr "Appuyez sur BLEU pour ajouter une chaîne depuis un bouquet."
+
+msgid "Press BLUE to select services."
+msgstr "Appuyez sur BLEU pour sélectionner les chaînes."
+
+msgid "Preview service / return"
+msgstr "Aperçu de la chaîne / retour"
+
+msgid "Remove"
+msgstr "Supprimer"
+
+#, python-format
+msgid "Replace the current selection with list '%s'?"
+msgstr "Remplacer la sélection actuelle par la liste '%s' ?"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Save as list"
+msgstr "Enregistrer comme liste"
+
+msgid "Select action"
+msgstr "Choisir une action"
+
+msgid "Select service for CustomEPG"
+msgstr "Choisissez une chaîne pour CustomEPG"
+
+msgid "Services"
+msgstr "Chaînes"
+
+#, python-format
+msgid "Services: %d"
+msgstr "Chaînes : %d"
+
+#, python-format
+msgid "Services: %d | Events: %d"
+msgstr "Chaînes : %d | Émissions : %d"
+
+msgid "Settings"
+msgstr "Paramètres"
+
+msgid "Settings could not be loaded. Fix the settings file before saving."
+msgstr "Impossible de charger les paramètres. Corrigez le fichier de configuration avant d'enregistrer."
+
+msgid "Show in channels selection menu"
+msgstr "Afficher dans le menu de sélection des chaînes"
+
+msgid "Show in event menu"
+msgstr "Afficher dans le menu des événements"
+
+msgid "Show in extensions menu"
+msgstr "Afficher dans le menu des extensions"
+
+msgid "Show plugin 'CustomEPG' in the channel selection context menu."
+msgstr "Afficher le plugin 'CustomEPG' dans le menu contextuel de sélection des chaînes."
+
+msgid "Show plugin 'CustomEPG' in the event menu."
+msgstr "Afficher le plugin 'CustomEPG' dans le menu des événements."
+
+msgid "Show plugin 'CustomEPG' in the extension menu."
+msgstr "Afficher le plugin 'CustomEPG' dans le menu des extensions."
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Temporary setting. Applies only until CustomEPG is closed."
+msgstr "Réglage temporaire. S'applique uniquement jusqu'à la fermeture de CustomEPG."
+
+msgid "This service is already selected."
+msgstr "Cette chaîne est déjà sélectionnée."
+
+msgid "Timer Overview"
+msgstr "Liste des programmations"
+
+msgid "Zap"
+msgstr "Zapper"
+
+msgid "by rating"
+msgstr "par classification d'âge"
+
+msgid "by time"
+msgstr "par heure"

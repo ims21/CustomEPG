@@ -1,0 +1,247 @@
+# CustomEPG translations.
+# Copyright (C) 2026 CustomEPG contributors
+# This file is distributed under the same license as the CustomEPG package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CustomEPG\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-08 20:11+0100\n"
+"PO-Revision-Date: 2026-11-08 20:27+0100\n"
+"Last-Translator: ims <ims@openpli.org>\n"
+"Language-Team: Nederlands\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#, python-format
+msgid "%d min"
+msgstr "%d min"
+
+msgid "Add"
+msgstr "Toevoegen"
+
+msgid "Alphabetical sorting"
+msgstr "Alfabetisch sorteren"
+
+msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
+msgstr "Geldt alleen voor 'A-Z'. 'Standaard' schakelt tekenomzetting uit."
+
+msgid "Apply"
+msgstr "Toepassen"
+
+msgid "CS/SK"
+msgstr "CS/SK"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, python-format
+msgid ""
+"Cannot access service list:\n"
+"%s"
+msgstr ""
+"Kan de zenderlijst niet openen:\n"
+"%s"
+
+msgid "Cannot load CustomEPG settings."
+msgstr "Kan de instellingen van CustomEPG niet laden."
+
+#, python-format
+msgid ""
+"Cannot load CustomEPG settings:\n"
+"%s"
+msgstr ""
+"Kan de instellingen van CustomEPG niet laden:\n"
+"%s"
+
+#, python-format
+msgid ""
+"Cannot save CustomEPG settings:\n"
+"%s"
+msgstr ""
+"Kan de instellingen van CustomEPG niet opslaan:\n"
+"%s"
+
+msgid "Close without saving changes?"
+msgstr "Afsluiten zonder de wijzigingen op te slaan?"
+
+msgid "CustomEPG"
+msgstr "CustomEPG"
+
+msgid "CustomEPG - Services"
+msgstr "CustomEPG - Zenders"
+
+#, python-format
+msgid "CustomEPG v%s - Settings"
+msgstr "CustomEPG v%s - Instellingen"
+
+msgid "Default setting for the maximum duration of displayed events."
+msgstr "Standaardinstelling voor de maximale duur van weergegeven programma's."
+
+msgid "Default setting for the minimum duration of displayed events."
+msgstr "Standaardinstelling voor de minimale duur van weergegeven programma's."
+
+msgid "Delete list"
+msgstr "Lijst verwijderen"
+
+#, python-format
+msgid "Delete list '%s'?"
+msgstr "Lijst '%s' verwijderen?"
+
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+msgid "EPG for selected services"
+msgstr "EPG voor geselecteerde zenders"
+
+msgid "Event duration - temporary setting"
+msgstr "Programmaduur - tijdelijke instelling"
+
+msgid "Filter by event duration"
+msgstr "Filteren op programmaduur"
+
+msgid "Finished"
+msgstr "Afgelopen"
+
+msgid "Finished and ongoing"
+msgstr "Afgelopen en lopend"
+
+msgid "Hide events"
+msgstr "Programma's verbergen"
+
+msgid "Hide events longer than"
+msgstr "Verberg programma's langer dan"
+
+msgid "Hide events shorter than"
+msgstr "Verberg programma's korter dan"
+
+msgid "Hide finished events, or both finished and ongoing events."
+msgstr "Verberg afgelopen programma's of zowel afgelopen als lopende programma's."
+
+#, python-format
+msgid "Import all services from '%s'"
+msgstr "Alle zenders uit '%s' importeren"
+
+msgid "Latin2"
+msgstr "Latin2"
+
+msgid "Latin2 with 'Ch'"
+msgstr "Latin2 met 'Ch'"
+
+msgid "List name"
+msgstr "Lijstnaam"
+
+msgid "Load list"
+msgstr "Lijst laden"
+
+msgid "MENU"
+msgstr "MENU"
+
+msgid "Maximum event duration must not be shorter than minimum event duration."
+msgstr "De maximale programmaduur mag niet korter zijn dan de minimale programmaduur."
+
+msgid "No"
+msgstr "Nee"
+
+msgid "No EPG available for the selected services."
+msgstr "Geen EPG-gegevens beschikbaar voor de geselecteerde zenders."
+
+msgid "No events match the time filter."
+msgstr "Geen programma's voldoen aan het tijdfilter."
+
+msgid "No saved service lists."
+msgstr "Geen opgeslagen zenderlijsten."
+
+msgid "OK: open bouquet and select a service, MENU: Import all services"
+msgstr "OK: boeket openen en zender kiezen, MENU: alle zenders importeren"
+
+#, python-format
+msgid "Overwrite list '%s'?"
+msgstr "Lijst '%s' overschrijven?"
+
+msgid "Press BLUE to add a service from a bouquet."
+msgstr "Druk op BLAUW om een zender uit een boeket toe te voegen."
+
+msgid "Press BLUE to select services."
+msgstr "Druk op BLAUW om zenders te selecteren."
+
+msgid "Preview service / return"
+msgstr "Zender bekijken / terug"
+
+msgid "Remove"
+msgstr "Verwijderen"
+
+#, python-format
+msgid "Replace the current selection with list '%s'?"
+msgstr "Huidige selectie vervangen door lijst '%s'?"
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid "Save as list"
+msgstr "Opslaan als lijst"
+
+msgid "Select action"
+msgstr "Actie selecteren"
+
+msgid "Select service for CustomEPG"
+msgstr "Kies een zender voor CustomEPG"
+
+msgid "Services"
+msgstr "Zenders"
+
+#, python-format
+msgid "Services: %d"
+msgstr "Zenders: %d"
+
+#, python-format
+msgid "Services: %d | Events: %d"
+msgstr "Zenders: %d | Programma's: %d"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Settings could not be loaded. Fix the settings file before saving."
+msgstr "De instellingen konden niet worden geladen. Herstel het instellingenbestand voordat u opslaat."
+
+msgid "Show in channels selection menu"
+msgstr "Weergeven in het zenderkeuzemenu"
+
+msgid "Show in event menu"
+msgstr "Weergeven in het programmamenu"
+
+msgid "Show in extensions menu"
+msgstr "Weergeven in het uitbreidingenmenu"
+
+msgid "Show plugin 'CustomEPG' in the channel selection context menu."
+msgstr "Plugin 'CustomEPG' weergeven in het contextmenu van de zenderkeuze."
+
+msgid "Show plugin 'CustomEPG' in the event menu."
+msgstr "Plugin 'CustomEPG' weergeven in het programmamenu."
+
+msgid "Show plugin 'CustomEPG' in the extension menu."
+msgstr "Plugin 'CustomEPG' weergeven in het uitbreidingenmenu."
+
+msgid "Standard"
+msgstr "Standaard"
+
+msgid "Temporary setting. Applies only until CustomEPG is closed."
+msgstr "Tijdelijke instelling. Geldt alleen totdat CustomEPG wordt afgesloten."
+
+msgid "This service is already selected."
+msgstr "Deze zender is al geselecteerd."
+
+msgid "Timer Overview"
+msgstr "Timeroverzicht"
+
+msgid "Zap"
+msgstr "Zappen"
+
+msgid "by rating"
+msgstr "op leeftijdsclassificatie"
+
+msgid "by time"
+msgstr "op tijd"
