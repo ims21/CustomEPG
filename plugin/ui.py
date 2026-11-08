@@ -18,7 +18,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "0.6"
+VERSION = "0.7"
 
 class CustomEPGList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
@@ -54,7 +54,7 @@ class CustomEPGList(EPGList):
 				remaining.append((name, value))
 		self.skinAttributes = remaining
 		result = EPGList.applySkin(self, desktop, parent)
-		self.l.setFont(2, gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 4))
+		self.l.setFont(2, gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 8))
 		self.l.setFont(3, gFont(self.eventTimeFont.family, self.eventTimeFont.pointSize + 2))
 		return result
 
@@ -83,7 +83,9 @@ class CustomEPGList(EPGList):
 
 	def buildSingleEntry(self, service, eventId, beginTime, duration, title):
 		row = EPGList.buildSingleEntry(self, service, eventId, beginTime, duration, title)
-		ended = beginTime is not None and duration is not None and beginTime + duration <= time()
+		now = time()
+		ended = beginTime is not None and duration is not None and beginTime + duration <= now
+		ongoing = beginTime is not None and duration is not None and beginTime <= now < beginTime + duration
 		# SingleEPG offsets the event text after timer icons but keeps its full
 		# width. Clip it to our narrower event column so it cannot cover the
 		# service or rating columns.
@@ -97,9 +99,12 @@ class CustomEPGList(EPGList):
 				if entry[7] == title and self.descr_rect.x <= entry[1] < self.service_rect.x:
 					entry[5] = 2
 					entry[3] = max(0, self.descr_rect.x + self.sidesMargin + self.descr_rect.w - entry[1])
-					if ended: # finished events
-						entry.extend([None] * max(0, 10 - len(entry)))
+					entry.extend([None] * max(0, 10 - len(entry)))
+					if ended:	# finished events color
 						entry[8] = 0x00777777
+						entry[9] = None
+					elif ongoing:	# ongoing events color
+						entry[8] = 0x00CCFFEE
 						entry[9] = None
 				if index in (1, 2):		# day, date/time
 					entry.extend([None] * max(0, 10 - len(entry)))
@@ -125,9 +130,15 @@ class CustomEPGList(EPGList):
 	def applyView(self, sorting, filtering, selected=None, now=None):
 		self.sorting = sorting
 		rows = self.filtering_epg(self.all_events, filtering) if filtering else self.all_events
-		if cfg.hide_started.value:
+		if cfg.hide_started.value != "false":
 			current_time = int(time())
-			rows = [row for row in rows if row[2] is not None and row[2] >= current_time]
+			if cfg.hide_started.value == "ended":
+				rows = [row for row in rows
+					if row[2] is not None and row[3] is not None
+					and row[2] + row[3] > current_time]
+			else:
+				rows = [row for row in rows
+					if row[2] is not None and row[2] >= current_time]
 		if self.minimum_duration:
 			minimum_seconds = self.minimum_duration * 60
 			rows = [row for row in rows if row[3] is not None and row[3] >= minimum_seconds]
