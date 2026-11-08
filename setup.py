@@ -7,6 +7,6 @@ setup (name = 'enigma2-plugin-extensions-customepg',
 	description = 'EPG for selected services',
 	packages = [pkg],
 	package_dir = {pkg: 'plugin'},
-	package_data = {pkg: ['locale/*.pot', 'locale/*/LC_MESSAGES/*.mo']},
+	package_data = {pkg: ['*.png', 'locale/*.pot', 'locale/*/LC_MESSAGES/*.mo']},
 	cmdclass = setup_translate.cmdclass, # for translation
 	)
