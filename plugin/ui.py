@@ -18,7 +18,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "0.8"
+VERSION = "0.9"
 
 class CustomEPGList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
@@ -178,6 +178,8 @@ class CustomEPGList(EPGList):
 class CustomEPGSelection(EPGSelection):
 
 	def __init__(self, session):
+		self._previewOriginalService = None
+		self._switchPending = False
 		self.custom_ready = False
 		self.settings_error = None
 		self.references = []
@@ -188,6 +190,11 @@ class CustomEPGSelection(EPGSelection):
 		self["customEPGActions"] = ActionMap(["EPGSelectActions"], {
 			"blue": self.blueButtonPressed,
 		}, -2)
+		# Play/PlayPause has a dedicated EPGCatchUpActions context in E2.
+		self["CatchUpActions"].setEnabled(False)
+		self["customPreviewActions"] = HelpableActionMap(self, "EPGCatchUpActions", {
+			"play": (self.togglePreview, _("Preview service / return")),
+		}, -3)
 		self["durationFilterActions"] = HelpableActionMap(self, "NumberActions", {
 			"5": (self.openDurationFilter, _("Filter by event duration")),
 		}, -2)
@@ -325,11 +332,51 @@ class CustomEPGSelection(EPGSelection):
 				or getattr(self, "serviceEditorHideStarted", cfg.hide_started.value) != cfg.hide_started.value):
 			self.settingsSaved(True)
 
+	def _switchService(self, reference, original=None, retval=None, adjust=False):
+		# Use the same timeshift confirmation as normal E2 channel zapping.
+		if self._switchPending or reference is None:
+			return
+		from Screens.InfoBar import InfoBar
+		infobar = InfoBar.instance
+		same = self.session.nav.getCurrentlyPlayingServiceOrGroup() == reference
+
+		def confirmed(answer):
+			self._switchPending = False
+			if not answer or (not same and self.session.nav.playService(reference, adjust=adjust) != 0):
+				return
+			if adjust and infobar is not None and hasattr(infobar, "servicelist"):
+				infobar.servicelist.servicelist.setCurrent(reference, True)
+			self._previewOriginalService = original
+			if retval is not None:
+				EPGSelection.close(self, *retval)
+
+		self._switchPending = True
+		if not same and infobar is not None and infobar.session is self.session and hasattr(infobar, "checkTimeshiftRunning"):
+			infobar.checkTimeshiftRunning(confirmed)
+		else:
+			confirmed(True)
+
+	def togglePreview(self):
+		if self._previewOriginalService is not None:
+			self._switchService(self._previewOriginalService)
+			return
+		cur = self["list"].getCurrent()
+		original = self.session.nav.getCurrentlyPlayingServiceOrGroup()
+		if cur and cur[1] and original is not None and original != cur[1].ref:
+			self._switchService(cur[1].ref, original=original)
+
+	def close(self, *retval):
+		if self._switchPending:
+			return
+		if self._previewOriginalService is not None:
+			self._switchService(self._previewOriginalService, retval=retval)
+		else:
+			EPGSelection.close(self, *retval)
+
 	def zapTo(self):
 		cur = self["list"].getCurrent()
 		if cur and cur[1]:
-			self.session.nav.playService(cur[1].ref)
-			self.close(True)
+			self._switchService(cur[1].ref, retval=(True,), adjust=True)
 
 	def prevService(self):
 		# PREV / NEXT in OpenPLi's EPGSelectActions.
