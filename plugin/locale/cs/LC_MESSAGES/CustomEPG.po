@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 20:11+0100\n"
+"POT-Creation-Date: 2026-11-08 20:43+0100\n"
 "PO-Revision-Date: 2026-11-08 20:12+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
@@ -55,11 +55,7 @@ msgstr ""
 "Operace se seznamem programů se nezdařila:\n"
 "%s"
 
-#: ../ui.py:252
-msgid "Cannot load CustomEPG settings."
-msgstr "Nastavení pro CustomEPG."
-
-#: ../ui.py:227 ../services.py:142
+#: ../ui.py:223 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -123,7 +119,7 @@ msgstr "EPG pro zvolené programy"
 msgid "Event duration - temporary setting"
 msgstr "Délka pořadů - dočasné nastavení"
 
-#: ../ui.py:199
+#: ../ui.py:197
 msgid "Filter by event duration"
 msgstr "Filtr pro délku pořadů"
 
@@ -184,14 +180,6 @@ msgstr "Nastavená maximální délka nesmí být kratší než nastavené minim
 msgid "No"
 msgstr ""
 
-#: ../ui.py:256
-msgid "No EPG available for the selected services."
-msgstr "Pro vybrané stanice nejsou k dispozici žádné EPG údaje."
-
-#: ../ui.py:258
-msgid "No events match the time filter."
-msgstr "Žádné události neodpovídají časovému filtru."
-
 #: ../services.py:207
 msgid "No saved service lists."
 msgstr "Žádný uložený seznam."
@@ -209,11 +197,7 @@ msgstr "Přepsat seznam %s?"
 msgid "Press BLUE to add a service from a bouquet."
 msgstr "Pro přidání programu z přehledu stiskněte Modré."
 
-#: ../ui.py:254
-msgid "Press BLUE to select services."
-msgstr "Stiskněte Modré pro přidání programů."
-
-#: ../ui.py:196
+#: ../ui.py:194
 msgid "Preview service / return"
 msgstr "Náhled programu / návrat"
 
@@ -234,7 +218,7 @@ msgstr "Uložit"
 msgid "Save as list"
 msgstr "Uložit jako seznam"
 
-#: ../ui.py:298
+#: ../ui.py:282
 msgid "Select action"
 msgstr ""
 
@@ -242,7 +226,7 @@ msgstr ""
 msgid "Select service for CustomEPG"
 msgstr "Vyberte program pro CustomEPG"
 
-#: ../ui.py:204
+#: ../ui.py:201
 msgid "Services"
 msgstr "Programy"
 
@@ -251,12 +235,7 @@ msgstr "Programy"
 msgid "Services: %d"
 msgstr "Programy: %d"
 
-#: ../ui.py:260
-#, python-format
-msgid "Services: %d | Events: %d"
-msgstr "Programy: %d | pořady: %d"
-
-#: ../ui.py:293 ../services.py:161
+#: ../ui.py:277 ../services.py:161
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -300,18 +279,18 @@ msgstr "Dočasné nastavení. Používá se pouze do zavření pluginu."
 msgid "This service is already selected."
 msgstr "Tento program je již vybrán."
 
-#: ../ui.py:291
+#: ../ui.py:275
 msgid "Timer Overview"
 msgstr ""
 
-#: ../ui.py:205 ../ui.py:405
+#: ../ui.py:202 ../ui.py:389
 msgid "Zap"
 msgstr "Přepnout"
 
-#: ../ui.py:247
+#: ../ui.py:242
 msgid "by rating"
 msgstr "podle věku"
 
-#: ../ui.py:247
+#: ../ui.py:242
 msgid "by time"
 msgstr "podle času"

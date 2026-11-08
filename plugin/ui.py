@@ -3,7 +3,6 @@ from time import time, perf_counter
 
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.EpgList import EPGList, EPG_TYPE_SINGLE, Rect
-from Components.Sources.StaticText import StaticText
 from Components.config import config
 from Screens.EpgSelection import EPGSelection
 from Screens.MessageBox import MessageBox
@@ -181,7 +180,6 @@ class CustomEPGSelection(EPGSelection):
 		self._previewOriginalService = None
 		self._switchPending = False
 		self.custom_ready = False
-		self.settings_error = None
 		self.references = []
 		# A string selects SingleEPG mode. No dependency on a currently playing service.
 		EPGSelection.__init__(self, session, "")
@@ -199,7 +197,6 @@ class CustomEPGSelection(EPGSelection):
 			"5": (self.openDurationFilter, _("Filter by event duration")),
 		}, -2)
 		self.skinName = ["CustomEPGSelection", "EPGSelection"]
-		self["status"] = StaticText()
 		self["list"] = CustomEPGList(self.onSelectionChanged, session.nav.RecordTimer)
 		self["key_blue"].setText(_("Services"))
 		self["key_red"].setText(_("Zap"))
@@ -222,11 +219,9 @@ class CustomEPGSelection(EPGSelection):
 		except (OSError, ValueError) as error:
 			self.references = []
 			self["list"].reload([], self.sort_type, self.filtering)
-			self.settings_error = str(error)
 			self.updateTitle()
 			self.session.open(MessageBox, _("Cannot load CustomEPG settings:\n%s") % error, MessageBox.TYPE_ERROR)
 			return
-		self.settings_error = None
 		self.references = [ref for ref, name in services]
 		self["list"].reload(self.references, self.sort_type, self.filtering)
 		self.updateTitle()
@@ -248,17 +243,6 @@ class CustomEPGSelection(EPGSelection):
 		if self.filtering:
 			title += " " + self.getTimespanText()
 		self.setTitle(title)
-		if self.settings_error:
-			status = _("Cannot load CustomEPG settings.")
-		elif not self.references:
-			status = _("Press BLUE to select services.")
-		elif not self["list"].all_events:
-			status = _("No EPG available for the selected services.")
-		elif not self["list"].list:
-			status = _("No events match the time filter.")
-		else:
-			status = _("Services: %d | Events: %d") % (len(self.references), len(self["list"].list))
-		self["status"].setText(status)
 
 	def setSortDescription(self):
 		EPGSelection.setSortDescription(self)

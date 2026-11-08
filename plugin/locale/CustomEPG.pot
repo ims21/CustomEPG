@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 20:11+0100\n"
+"POT-Creation-Date: 2026-11-08 20:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,11 +53,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../ui.py:252
-msgid "Cannot load CustomEPG settings."
-msgstr ""
-
-#: ../ui.py:227 ../services.py:142
+#: ../ui.py:223 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -117,7 +113,7 @@ msgstr ""
 msgid "Event duration - temporary setting"
 msgstr ""
 
-#: ../ui.py:199
+#: ../ui.py:197
 msgid "Filter by event duration"
 msgstr ""
 
@@ -178,14 +174,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: ../ui.py:256
-msgid "No EPG available for the selected services."
-msgstr ""
-
-#: ../ui.py:258
-msgid "No events match the time filter."
-msgstr ""
-
 #: ../services.py:207
 msgid "No saved service lists."
 msgstr ""
@@ -203,11 +191,7 @@ msgstr ""
 msgid "Press BLUE to add a service from a bouquet."
 msgstr ""
 
-#: ../ui.py:254
-msgid "Press BLUE to select services."
-msgstr ""
-
-#: ../ui.py:196
+#: ../ui.py:194
 msgid "Preview service / return"
 msgstr ""
 
@@ -228,7 +212,7 @@ msgstr ""
 msgid "Save as list"
 msgstr ""
 
-#: ../ui.py:298
+#: ../ui.py:282
 msgid "Select action"
 msgstr ""
 
@@ -236,7 +220,7 @@ msgstr ""
 msgid "Select service for CustomEPG"
 msgstr ""
 
-#: ../ui.py:204
+#: ../ui.py:201
 msgid "Services"
 msgstr ""
 
@@ -245,12 +229,7 @@ msgstr ""
 msgid "Services: %d"
 msgstr ""
 
-#: ../ui.py:260
-#, python-format
-msgid "Services: %d | Events: %d"
-msgstr ""
-
-#: ../ui.py:293 ../services.py:161
+#: ../ui.py:277 ../services.py:161
 msgid "Settings"
 msgstr ""
 
@@ -294,18 +273,18 @@ msgstr ""
 msgid "This service is already selected."
 msgstr ""
 
-#: ../ui.py:291
+#: ../ui.py:275
 msgid "Timer Overview"
 msgstr ""
 
-#: ../ui.py:205 ../ui.py:405
+#: ../ui.py:202 ../ui.py:389
 msgid "Zap"
 msgstr ""
 
-#: ../ui.py:247
+#: ../ui.py:242
 msgid "by rating"
 msgstr ""
 
-#: ../ui.py:247
+#: ../ui.py:242
 msgid "by time"
 msgstr ""
