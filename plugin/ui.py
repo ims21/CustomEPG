@@ -260,7 +260,7 @@ class CustomEPGSelection(EPGSelection):
 					menu.append((plugin.name, lambda plugin=plugin: self.runPlugin(plugin)))
 		menu.append((_("Timer Overview"), self.openTimerOverview))
 		keys = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "red", "green", "yellow", "blue"] + ["dummy"] * len(menu))[:len(menu)]
-		menu.append((_("CustomEPG settings"), self.openSettings))
+		menu.append((_("Settings"), self.openSettings))
 		keys.append("menu")
 		def selected(choice):
 			if choice:

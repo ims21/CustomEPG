@@ -158,8 +158,8 @@ class CustomEPGServiceEditor(Screen):
 				(_("Save as list"), self.saveAsList),
 				(_("Load list"), self.chooseLoadList),
 				(_("Delete list"), self.chooseDeleteList),
-				(_("CustomEPG settings"), self.openSettings),
-			], keys=["1", "2", "3", "menu"])
+				(_("Settings"), self.openSettings),
+			], keys=["2", "3", "8", "menu"])
 
 	def menuSelected(self, choice):
 		if choice:

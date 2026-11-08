@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 09:12+0100\n"
+"POT-Creation-Date: 2026-11-08 09:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,10 +72,6 @@ msgstr ""
 
 #: ../services.py:97 ../services.py:157
 msgid "CustomEPG - Services"
-msgstr ""
-
-#: ../ui.py:263 ../services.py:161
-msgid "CustomEPG settings"
 msgstr ""
 
 #: ../settings.py:28
@@ -191,6 +187,10 @@ msgstr ""
 #: ../ui.py:230
 #, python-format
 msgid "Services: %d | Events: %d"
+msgstr ""
+
+#: ../ui.py:263 ../services.py:161
+msgid "Settings"
 msgstr ""
 
 #: ../services.py:282
