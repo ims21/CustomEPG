@@ -1,7 +1,7 @@
 from os.path import exists
 from time import time, perf_counter
 
-from Components.ActionMap import ActionMap
+from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.EpgList import EPGList, EPG_TYPE_SINGLE, Rect
 from Components.Sources.StaticText import StaticText
 from Components.config import config
@@ -18,7 +18,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "0.5"
+VERSION = "0.6"
 
 class CustomEPGList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
@@ -27,6 +27,7 @@ class CustomEPGList(EPGList):
 		self.list = []
 		self.all_events = []
 		self.service_names = {}
+		self.minimum_duration = int(cfg.minimum_duration.value)
 
 	# Default dimensions use OpenPLi's 720p skin factor. Skin overrides use parseScale.
 	columnDefaults = {
@@ -127,6 +128,9 @@ class CustomEPGList(EPGList):
 		if cfg.hide_started.value:
 			current_time = int(time())
 			rows = [row for row in rows if row[2] is not None and row[2] >= current_time]
+		if self.minimum_duration:
+			minimum_seconds = self.minimum_duration * 60
+			rows = [row for row in rows if row[3] is not None and row[3] >= minimum_seconds]
 		self.list = self.sortEvents(rows, sorting)
 		self.l.setList(self.list)
 		self.recalcEntrySize()
@@ -167,6 +171,9 @@ class CustomEPGSelection(EPGSelection):
 		# EPGSelection.__init__. Keep our service editor on BLUE at priority -2.
 		self["customEPGActions"] = ActionMap(["EPGSelectActions"], {
 			"blue": self.blueButtonPressed,
+		}, -2)
+		self["durationFilterActions"] = HelpableActionMap(self, "NumberActions", {
+			"5": (self.openDurationFilter, _("Filter by minimum event duration")),
 		}, -2)
 		self.skinName = ["CustomEPGSelection", "EPGSelection"]
 		self["status"] = StaticText()
@@ -267,12 +274,26 @@ class CustomEPGSelection(EPGSelection):
 				choice[1]()
 		self.session.openWithCallback(selected, ChoiceBox, title=_("Select action"), list=menu, keys=keys)
 
+	def openDurationFilter(self):
+		from .settings import CustomEPGDurationSetup
+		self.session.openWithCallback(self.durationFilterSelected,
+			CustomEPGDurationSetup, self["list"].minimum_duration)
+
+	def durationFilterSelected(self, minutes):
+		if minutes is None:
+			return
+		self["list"].minimum_duration = minutes
+		selected = event_key(self["list"].l.getCurrentSelection())
+		self["list"].applyView(self.sort_type, self.filtering, selected=selected)
+		self.updateTitle()
+
 	def openSettings(self):
 		from .settings import CustomEPGSetup
 		self.session.openWithCallback(self.settingsSaved, CustomEPGSetup)
 
 	def settingsSaved(self, saved=False):
 		if saved:
+			self["list"].minimum_duration = int(cfg.minimum_duration.value)
 			self.reloadEPG()
 
 	def blueButtonPressed(self):

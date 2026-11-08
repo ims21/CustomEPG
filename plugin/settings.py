@@ -1,13 +1,14 @@
+from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
-from Components.config import configfile, getConfigListEntry
+from Components.config import  ConfigSelection, configfile, getConfigListEntry
 from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
 from Screens.HelpMenu import HelpableScreen
 from Screens.MessageBox import MessageBox
 
 from . import _
-from .configuration import cfg
+from .configuration import cfg, duration_choices
 from .ui import VERSION
 
 class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
@@ -28,6 +29,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.setTitle(_("CustomEPG v%s - Settings") % VERSION)
 		self.entries = [
 			getConfigListEntry(_("Do not show past and ongoing event"), cfg.hide_started, _("Show only programmes starting now or later.")),
+			getConfigListEntry(_("Hide events shorter than"), cfg.minimum_duration, _("Default minimum event duration when opening CustomEPG.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
 			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")),
 			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")),
@@ -66,3 +68,28 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		from Tools.Directories import SCOPE_PLUGINS, resolveFilename
 		plugins.clearPluginList()
 		plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))
+
+
+class CustomEPGDurationSetup(CustomEPGSetup):
+
+	def __init__(self, session, minutes):
+		CustomEPGSetup.__init__(self, session)
+		self.setTitle(_("Minimum event duration - temporary setting"))
+		self.duration = ConfigSelection(default=str(minutes), choices=duration_choices)
+		self.entries = [
+			getConfigListEntry(_("Hide events shorter than"), self.duration,
+				_("Temporary setting. Applies only until CustomEPG is closed.")),
+		]
+		self["config"].setList(self.entries)
+		self["key_green"].setText(_("Apply"))
+		self["durationActions"] = ActionMap(["OkCancelActions"], {
+			"ok": self.keySave,
+			"cancel": self.keyCancel,
+		}, -2)
+		self.selectionChanged()
+
+	def keySave(self):
+		self.close(int(self.duration.value))
+
+	def keyCancel(self):
+		self.close(None)
