@@ -97,7 +97,6 @@ class CustomEPGDurationSetup(CustomEPGSetup):
 		self["config"].setList(self.entries)
 		self["key_green"].setText(_("Apply"))
 		self["durationActions"] = ActionMap(["OkCancelActions"], {
-			"ok": self.keySave,
 			"cancel": self.keyCancel,
 		}, -2)
 		self.selectionChanged()

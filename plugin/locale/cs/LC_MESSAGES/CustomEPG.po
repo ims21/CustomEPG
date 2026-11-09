@@ -109,7 +109,7 @@ msgstr "Opravdu smazat seznam '%s'?"
 
 #: ../configuration.py:12
 msgid "No limit"
-msgstr "Neomezeno"
+msgstr "Bez omezení"
 
 #: ../plugin.py:20
 msgid "EPG for selected services"
