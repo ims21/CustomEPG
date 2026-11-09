@@ -107,8 +107,8 @@ msgid "Delete list '%s'?"
 msgstr "Supprimer la liste '%s' ?"
 
 #: ../configuration.py:12
-msgid "Disabled"
-msgstr "Désactivé"
+msgid "No limit"
+msgstr "Sans limite"
 
 #: ../plugin.py:20
 msgid "EPG for selected services"
