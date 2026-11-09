@@ -194,7 +194,8 @@ class CustomEPGSelection(EPGSelection):
 			"play": (self.togglePreview, _("Preview service / return")),
 		}, -3)
 		self["durationFilterActions"] = HelpableActionMap(self, "NumberActions", {
-			"5": (self.openDurationFilter, _("Filter by event duration")),
+			"2": (self.openDurationFilter, _("Filter by event duration")),
+			"5": (self.reloadEPG, _("Refresh EPG")),
 		}, -2)
 		self.skinName = ["CustomEPGSelection", "EPGSelection"]
 		self["list"] = CustomEPGList(self.onSelectionChanged, session.nav.RecordTimer)
