@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-10 17:46+0100\n"
-"PO-Revision-Date: 2026-11-10 17:58+0100\n"
+"PO-Revision-Date: 2026-11-10 18:19+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -36,7 +36,7 @@ msgstr "Vždy zobrazovat minimální věk"
 
 #: ../settings.py:34
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
-msgstr "Projeví se při řazení 'A–Z'. Volba 'Standardní' vypíná převod znaků."
+msgstr "Projeví se při řazení 'A-Z'. Volba 'Standardní' vypíná převod znaků."
 
 #: ../settings.py:99
 msgid "Apply"
