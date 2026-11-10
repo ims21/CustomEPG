@@ -17,7 +17,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "0.9"
+VERSION = "1.00"
 
 class CustomEPGList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
@@ -70,9 +70,9 @@ class CustomEPGList(EPGList):
 		date_x = min(width, day_width + dimensions["customDayDateGap"])
 		date_width = min(width - date_x, dimensions["customDateTimeWidth"])
 		event_x = min(width, date_x + date_width + dimensions["customDateEventGap"])
-		rating_width = min(width - event_x, dimensions["customRatingWidth"]) if self.sorting == 2 else 0
+		rating_width = min(width - event_x, dimensions["customRatingWidth"]) if self.showRating() else 0
 		rating_x = width - rating_width
-		service_end = max(event_x, rating_x - dimensions["customServiceRatingGap"]) if self.sorting == 2 else width
+		service_end = max(event_x, rating_x - dimensions["customServiceRatingGap"]) if self.showRating() else width
 		service_width = min(service_end - event_x, dimensions["customServiceWidth"])
 		service_x = service_end - service_width
 		event_width = max(0, service_x - dimensions["customEventServiceGap"] - event_x)
@@ -83,6 +83,8 @@ class CustomEPGList(EPGList):
 		self.rating_rect = Rect(rating_x, 0, rating_width, height)
 
 	def buildSingleEntry(self, service, eventId, beginTime, duration, title):
+		if cfg.showrating.value:
+			self.sorting = 2
 		row = EPGList.buildSingleEntry(self, service, eventId, beginTime, duration, title)
 		now = time()
 		ended = beginTime is not None and duration is not None and beginTime + duration <= now
@@ -111,7 +113,7 @@ class CustomEPGList(EPGList):
 					entry.extend([None] * max(0, 10 - len(entry)))
 					entry[8] = 0x00d0d0d0	# row: gray
 					entry[9] = None		# selected row: color from skin
-				elif (self.sorting == 2 and entry[1] == self.rating_rect.x + self.sidesMargin):	# rating
+				elif (self.showRating() and entry[1] == self.rating_rect.x + self.sidesMargin):	# rating
 					entry.extend([None] * max(0, 10 - len(entry)))
 					entry[8] = 0x000080b0	# rating: blue light
 					entry[9] = None		# selected row: color from skin
@@ -152,6 +154,9 @@ class CustomEPGList(EPGList):
 		if self.instance is not None and self.list:
 			self.instance.moveSelectionTo(selection_index(self.list, selected, now))
 		self.selectionChanged()
+
+	def showRating(self):
+		return self.sorting == 2 or cfg.showrating.value
 
 	def sortEvents(self, rows, sorting):
 		if sorting != 1:

@@ -32,6 +32,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 			getConfigListEntry(_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")),
 			getConfigListEntry(_("Hide events longer than"), cfg.maximum_duration, _("Default setting for the maximum duration of displayed events.")),
 			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
+			getConfigListEntry(_("Always show rating"), cfg.showrating, _("Show rating column regardless of the selected sorting mode.")),
 			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")),
 			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")),
 			getConfigListEntry(_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show plugin 'CustomEPG' in the channel selection context menu.")),
