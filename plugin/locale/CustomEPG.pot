@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 20:43+0100\n"
+"POT-Creation-Date: 2026-11-10 17:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,11 +30,15 @@ msgstr ""
 msgid "Alphabetical sorting"
 msgstr ""
 
+#: ../settings.py:35
+msgid "Always show rating"
+msgstr ""
+
 #: ../settings.py:34
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
 msgstr ""
 
-#: ../settings.py:98
+#: ../settings.py:99
 msgid "Apply"
 msgstr ""
 
@@ -53,7 +57,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../ui.py:223 ../services.py:142
+#: ../ui.py:229 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -67,7 +71,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../settings.py:67 ../services.py:293
+#: ../settings.py:68 ../services.py:293
 msgid "Close without saving changes?"
 msgstr ""
 
@@ -101,19 +105,15 @@ msgstr ""
 msgid "Delete list '%s'?"
 msgstr ""
 
-#: ../configuration.py:12
-msgid "No limit"
-msgstr ""
-
 #: ../plugin.py:20
 msgid "EPG for selected services"
 msgstr ""
 
-#: ../settings.py:88
+#: ../settings.py:89
 msgid "Event duration - temporary setting"
 msgstr ""
 
-#: ../ui.py:197
+#: ../ui.py:202
 msgid "Filter by event duration"
 msgstr ""
 
@@ -129,11 +129,11 @@ msgstr ""
 msgid "Hide events"
 msgstr ""
 
-#: ../settings.py:33 ../settings.py:94
+#: ../settings.py:33 ../settings.py:95
 msgid "Hide events longer than"
 msgstr ""
 
-#: ../settings.py:32 ../settings.py:92
+#: ../settings.py:32 ../settings.py:93
 msgid "Hide events shorter than"
 msgstr ""
 
@@ -166,12 +166,16 @@ msgstr ""
 msgid "MENU"
 msgstr ""
 
-#: ../settings.py:50
+#: ../settings.py:51
 msgid "Maximum event duration must not be shorter than minimum event duration."
 msgstr ""
 
 #: ../configuration.py:8
 msgid "No"
+msgstr ""
+
+#: ../configuration.py:12
+msgid "No limit"
 msgstr ""
 
 #: ../services.py:207
@@ -191,8 +195,12 @@ msgstr ""
 msgid "Press BLUE to add a service from a bouquet."
 msgstr ""
 
-#: ../ui.py:194
+#: ../ui.py:199
 msgid "Preview service / return"
+msgstr ""
+
+#: ../ui.py:203
+msgid "Refresh EPG"
 msgstr ""
 
 #: ../services.py:117
@@ -212,7 +220,7 @@ msgstr ""
 msgid "Save as list"
 msgstr ""
 
-#: ../ui.py:282
+#: ../ui.py:288
 msgid "Select action"
 msgstr ""
 
@@ -220,7 +228,7 @@ msgstr ""
 msgid "Select service for CustomEPG"
 msgstr ""
 
-#: ../ui.py:201
+#: ../ui.py:207
 msgid "Services"
 msgstr ""
 
@@ -229,7 +237,7 @@ msgstr ""
 msgid "Services: %d"
 msgstr ""
 
-#: ../ui.py:277 ../services.py:161
+#: ../ui.py:283 ../services.py:161
 msgid "Settings"
 msgstr ""
 
@@ -237,35 +245,39 @@ msgstr ""
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
-#: ../settings.py:37
+#: ../settings.py:38
 msgid "Show in channels selection menu"
 msgstr ""
 
-#: ../settings.py:36
+#: ../settings.py:37
 msgid "Show in event menu"
 msgstr ""
 
-#: ../settings.py:35
+#: ../settings.py:36
 msgid "Show in extensions menu"
 msgstr ""
 
-#: ../settings.py:37
+#: ../settings.py:38
 msgid "Show plugin 'CustomEPG' in the channel selection context menu."
 msgstr ""
 
-#: ../settings.py:36
+#: ../settings.py:37
 msgid "Show plugin 'CustomEPG' in the event menu."
 msgstr ""
 
-#: ../settings.py:35
+#: ../settings.py:36
 msgid "Show plugin 'CustomEPG' in the extension menu."
+msgstr ""
+
+#: ../settings.py:35
+msgid "Show rating column regardless of the selected sorting mode."
 msgstr ""
 
 #: ../configuration.py:16
 msgid "Standard"
 msgstr ""
 
-#: ../settings.py:93 ../settings.py:95
+#: ../settings.py:94 ../settings.py:96
 msgid "Temporary setting. Applies only until CustomEPG is closed."
 msgstr ""
 
@@ -273,18 +285,18 @@ msgstr ""
 msgid "This service is already selected."
 msgstr ""
 
-#: ../ui.py:275
+#: ../ui.py:281
 msgid "Timer Overview"
 msgstr ""
 
-#: ../ui.py:202 ../ui.py:389
+#: ../ui.py:208 ../ui.py:395
 msgid "Zap"
 msgstr ""
 
-#: ../ui.py:242
+#: ../ui.py:248
 msgid "by rating"
 msgstr ""
 
-#: ../ui.py:242
+#: ../ui.py:248
 msgid "by time"
 msgstr ""

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 20:43+0100\n"
-"PO-Revision-Date: 2026-11-08 20:12+0100\n"
+"POT-Creation-Date: 2026-11-10 17:46+0100\n"
+"PO-Revision-Date: 2026-11-10 17:58+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -30,11 +30,15 @@ msgstr "Přidat"
 msgid "Alphabetical sorting"
 msgstr "Abecední třídění"
 
+#: ../settings.py:35
+msgid "Always show rating"
+msgstr "Vždy zobrazovat minimální věk"
+
 #: ../settings.py:34
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
 msgstr "Projeví se při řazení 'A–Z'. Volba 'Standardní' vypíná převod znaků."
 
-#: ../settings.py:98
+#: ../settings.py:99
 msgid "Apply"
 msgstr "Použít"
 
@@ -55,7 +59,7 @@ msgstr ""
 "Operace se seznamem programů se nezdařila:\n"
 "%s"
 
-#: ../ui.py:223 ../services.py:142
+#: ../ui.py:229 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -73,7 +77,7 @@ msgstr ""
 "Nelze uložit nastavení CustomEPG:\n"
 "%s"
 
-#: ../settings.py:67 ../services.py:293
+#: ../settings.py:68 ../services.py:293
 msgid "Close without saving changes?"
 msgstr "Zavřít bez uložení?"
 
@@ -107,19 +111,15 @@ msgstr "Smazat seznam"
 msgid "Delete list '%s'?"
 msgstr "Opravdu smazat seznam '%s'?"
 
-#: ../configuration.py:12
-msgid "No limit"
-msgstr "Bez omezení"
-
 #: ../plugin.py:20
 msgid "EPG for selected services"
 msgstr "EPG pro zvolené programy"
 
-#: ../settings.py:88
+#: ../settings.py:89
 msgid "Event duration - temporary setting"
 msgstr "Délka pořadů - dočasné nastavení"
 
-#: ../ui.py:197
+#: ../ui.py:202
 msgid "Filter by event duration"
 msgstr "Filtr pro délku pořadů"
 
@@ -135,11 +135,11 @@ msgstr "Dokončené a probíhající"
 msgid "Hide events"
 msgstr "Skrývat pořady"
 
-#: ../settings.py:33 ../settings.py:94
+#: ../settings.py:33 ../settings.py:95
 msgid "Hide events longer than"
 msgstr "Nezobrazovat pořady delší než"
 
-#: ../settings.py:32 ../settings.py:92
+#: ../settings.py:32 ../settings.py:93
 msgid "Hide events shorter than"
 msgstr "Nezobrazovat pořady kratší než"
 
@@ -172,13 +172,17 @@ msgstr "Načíst seznam"
 msgid "MENU"
 msgstr ""
 
-#: ../settings.py:50
+#: ../settings.py:51
 msgid "Maximum event duration must not be shorter than minimum event duration."
 msgstr "Nastavená maximální délka nesmí být kratší než nastavené minimum."
 
 #: ../configuration.py:8
 msgid "No"
 msgstr ""
+
+#: ../configuration.py:12
+msgid "No limit"
+msgstr "Bez omezení"
 
 #: ../services.py:207
 msgid "No saved service lists."
@@ -197,9 +201,13 @@ msgstr "Přepsat seznam %s?"
 msgid "Press BLUE to add a service from a bouquet."
 msgstr "Pro přidání programu z přehledu stiskněte Modré."
 
-#: ../ui.py:194
+#: ../ui.py:199
 msgid "Preview service / return"
 msgstr "Náhled programu / návrat"
+
+#: ../ui.py:203
+msgid "Refresh EPG"
+msgstr ""
 
 #: ../services.py:117
 msgid "Remove"
@@ -218,7 +226,7 @@ msgstr "Uložit"
 msgid "Save as list"
 msgstr "Uložit jako seznam"
 
-#: ../ui.py:282
+#: ../ui.py:288
 msgid "Select action"
 msgstr ""
 
@@ -226,7 +234,7 @@ msgstr ""
 msgid "Select service for CustomEPG"
 msgstr "Vyberte program pro CustomEPG"
 
-#: ../ui.py:201
+#: ../ui.py:207
 msgid "Services"
 msgstr "Programy"
 
@@ -235,7 +243,7 @@ msgstr "Programy"
 msgid "Services: %d"
 msgstr "Programy: %d"
 
-#: ../ui.py:277 ../services.py:161
+#: ../ui.py:283 ../services.py:161
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -243,35 +251,39 @@ msgstr "Nastavení"
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr "Nastavení se nepodařilo načíst. Před uložením opravte soubor s nastavením."
 
-#: ../settings.py:37
+#: ../settings.py:38
 msgid "Show in channels selection menu"
 msgstr "Zobrazovat v menu výběru kanálů"
 
-#: ../settings.py:36
+#: ../settings.py:37
 msgid "Show in event menu"
 msgstr "Zobrazovat v event menu"
 
-#: ../settings.py:35
+#: ../settings.py:36
 msgid "Show in extensions menu"
 msgstr "Zobrazovat v menu rozšíření"
 
-#: ../settings.py:37
+#: ../settings.py:38
 msgid "Show plugin 'CustomEPG' in the channel selection context menu."
 msgstr "Zobrazovat plugin 'CustomEPG' v menu výběru kanálů."
 
-#: ../settings.py:36
+#: ../settings.py:37
 msgid "Show plugin 'CustomEPG' in the event menu."
 msgstr "Zobrazovat plugin 'CustomEPG' v event menu."
 
-#: ../settings.py:35
+#: ../settings.py:36
 msgid "Show plugin 'CustomEPG' in the extension menu."
 msgstr "Zobrazovat plugin 'CustomEPG' v menu rozšíření."
+
+#: ../settings.py:35
+msgid "Show rating column regardless of the selected sorting mode."
+msgstr "Zobrazovat sloupec s minimálním věkem vždy, bez ohledu na režim třídění."
 
 #: ../configuration.py:16
 msgid "Standard"
 msgstr "Standardní"
 
-#: ../settings.py:93 ../settings.py:95
+#: ../settings.py:94 ../settings.py:96
 msgid "Temporary setting. Applies only until CustomEPG is closed."
 msgstr "Dočasné nastavení. Používá se pouze do zavření pluginu."
 
@@ -279,18 +291,18 @@ msgstr "Dočasné nastavení. Používá se pouze do zavření pluginu."
 msgid "This service is already selected."
 msgstr "Tento program je již vybrán."
 
-#: ../ui.py:275
+#: ../ui.py:281
 msgid "Timer Overview"
 msgstr ""
 
-#: ../ui.py:202 ../ui.py:389
+#: ../ui.py:208 ../ui.py:395
 msgid "Zap"
 msgstr "Přepnout"
 
-#: ../ui.py:242
+#: ../ui.py:248
 msgid "by rating"
 msgstr "podle věku"
 
-#: ../ui.py:242
+#: ../ui.py:248
 msgid "by time"
 msgstr "podle času"
