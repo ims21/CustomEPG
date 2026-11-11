@@ -1,7 +1,7 @@
 from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
-from Components.config import  ConfigSelection, configfile, getConfigListEntry
+from Components.config import  ConfigSelection, configfile
 from Components.Sources.StaticText import StaticText
 from Screens.Screen import Screen
 from Screens.HelpMenu import HelpableScreen
@@ -27,23 +27,33 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		self["key_yellow"] = StaticText("")
 		self["key_blue"] = StaticText("")
 		self.setTitle(_("CustomEPG v%s - Settings") % VERSION)
-		self.entries = [
-			getConfigListEntry(_("Hide events"), cfg.hide_started, _("Hide finished events, or both finished and ongoing events.")),
-			getConfigListEntry(_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")),
-			getConfigListEntry(_("Hide events longer than"), cfg.maximum_duration, _("Default setting for the maximum duration of displayed events.")),
-			getConfigListEntry(_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")),
-			getConfigListEntry(_("Always show rating"), cfg.showrating, _("Show rating column regardless of the selected sorting mode.")),
-			getConfigListEntry(_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")),
-			getConfigListEntry(_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")),
-			getConfigListEntry(_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show plugin 'CustomEPG' in the channel selection context menu.")),
-		]
-		ConfigListScreen.__init__(self, self.entries, session=session, fullUI=True)
+		self.entries = self.createSetup()
+		ConfigListScreen.__init__(self, self.entries, session=session, on_change=self.configChanged, fullUI=True)
 		self["config"].onSelectionChanged.append(self.selectionChanged)
 		self.selectionChanged()
+
+	def createSetup(self):
+		menu = []
+		menu.append((_("Hide events"), cfg.hide_started, _("Hide finished events, or both finished and ongoing events.")))
+		if cfg.hide_started.value != "true":
+			menu.append((4 * " " + _("Cursor on current service"), cfg.currentservice, _("Select the currently playing event when opening CustomEPG.")))
+		menu.append((_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")))
+		menu.append((_("Hide events longer than"), cfg.maximum_duration, _("Default setting for the maximum duration of displayed events.")))
+		menu.append((_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")))
+		menu.append((_("Always show rating"), cfg.showrating, _("Show rating column regardless of the selected sorting mode.")))
+		menu.append((_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")))
+		menu.append((_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")))
+		menu.append((_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show plugin 'CustomEPG' in the channel selection context menu.")))
+		return menu
 
 	def selectionChanged(self):
 		current = self["config"].getCurrent()
 		self["description"].setText(current[2] if current and len(current) > 2 else "")
+
+	def configChanged(self):
+		if self["config"].getCurrent()[1] == cfg.hide_started:
+			self.entries = self.createSetup()
+			self["config"].setList(self.entries)
 
 	def validDurationRange(self, minimum, maximum):
 		if maximum and minimum > maximum:
@@ -58,6 +68,8 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 			return
 		for entry in self.entries:
 			entry[1].save()
+		if cfg.hide_started.value == "true":
+			cfg.currentservice.save()
 		configfile.save()
 		self.refreshPlugins()
 		self.close(True)
@@ -73,6 +85,8 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		if answer:
 			for entry in self.entries:
 				entry[1].cancel()
+			if cfg.hide_started.value == "true":
+				cfg.currentservice.cancel()
 			self.close(False)
 
 	def refreshPlugins(self):

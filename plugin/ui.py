@@ -17,7 +17,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import CustomEPGServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "1.00"
+VERSION = "1.01"
 
 class CustomEPGList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
@@ -185,6 +185,7 @@ class CustomEPGSelection(EPGSelection):
 		self._previewOriginalService = None
 		self._switchPending = False
 		self.custom_ready = False
+		self.initialSelection = True
 		self.references = []
 		# A string selects SingleEPG mode. No dependency on a currently playing service.
 		EPGSelection.__init__(self, session, "")
@@ -230,6 +231,16 @@ class CustomEPGSelection(EPGSelection):
 			return
 		self.references = [ref for ref, name in services]
 		self["list"].reload(self.references, self.sort_type, self.filtering)
+		if self.initialSelection:
+			self.initialSelection = False
+			if cfg.currentservice.value and cfg.hide_started.value != "true":
+				service = self.session.nav.getCurrentlyPlayingServiceReference()
+				if service and service.toString() in self.references:
+					now = int(time())
+					for i, row in enumerate(self["list"].list):
+						if row[0] == service.toString() and row[2] <= now < row[2] + row[3]:
+							self["list"].instance.moveSelectionTo(i)
+							break
 		self.updateTitle()
 		self.refreshPartnerboxIcons()
 
@@ -308,6 +319,8 @@ class CustomEPGSelection(EPGSelection):
 		if saved:
 			self["list"].minimum_duration = int(cfg.minimum_duration.value)
 			self["list"].maximum_duration = int(cfg.maximum_duration.value)
+			if cfg.hide_started.value != "true":
+				self.initialSelection = True
 			self.reloadEPG()
 
 	def blueButtonPressed(self):

@@ -9,6 +9,7 @@ config.plugins.customepg.hide_started = ConfigSelection(default="true", choices=
 	("ended", _("Finished")),
 	("true", _("Finished and ongoing")),
 ])
+config.plugins.customepg.currentservice = ConfigYesNo(default=False)
 duration_choices = [("0", _("No limit"))] + [(str(minutes), _("%d min") % minutes) for minutes in range(10, 241, 5)]
 config.plugins.customepg.minimum_duration = ConfigSelection(default="0", choices=duration_choices)
 config.plugins.customepg.maximum_duration = ConfigSelection(default="0", choices=duration_choices)
