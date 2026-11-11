@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CustomEPG\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-10 17:46+0100\n"
+"POT-Creation-Date: 2026-11-11 22:16+0100\n"
 "PO-Revision-Date: 2026-11-08 20:27+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: Français\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.10\n"
 
-#: ../configuration.py:12
+#: ../configuration.py:13
 #, python-format
 msgid "%d min"
 msgstr "%d min"
@@ -25,23 +25,23 @@ msgstr "%d min"
 msgid "Add"
 msgstr "Ajouter"
 
-#: ../settings.py:34
+#: ../settings.py:42
 msgid "Alphabetical sorting"
 msgstr "Tri alphabétique"
 
-#: ../settings.py:35
+#: ../settings.py:43
 msgid "Always show rating"
 msgstr ""
 
-#: ../settings.py:34
+#: ../settings.py:42
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
 msgstr "S'applique uniquement au tri 'A-Z'. 'Standard' désactive la conversion des caractères."
 
-#: ../settings.py:99
+#: ../settings.py:113
 msgid "Apply"
 msgstr "Appliquer"
 
-#: ../configuration.py:17
+#: ../configuration.py:18
 msgid "CS/SK"
 msgstr "CS/SK"
 
@@ -58,7 +58,7 @@ msgstr ""
 "Impossible d'accéder à la liste des chaînes :\n"
 "%s"
 
-#: ../ui.py:229 ../services.py:142
+#: ../ui.py:230 ../services.py:142
 #, python-format
 msgid ""
 "Cannot load CustomEPG settings:\n"
@@ -76,9 +76,13 @@ msgstr ""
 "Impossible d'enregistrer les paramètres de CustomEPG :\n"
 "%s"
 
-#: ../settings.py:68 ../services.py:293
+#: ../settings.py:80 ../services.py:293
 msgid "Close without saving changes?"
 msgstr "Fermer sans enregistrer les modifications ?"
+
+#: ../settings.py:39
+msgid "Cursor on current service"
+msgstr ""
 
 #: ../plugin.py:19
 msgid "CustomEPG"
@@ -93,11 +97,11 @@ msgstr "CustomEPG - Chaînes"
 msgid "CustomEPG v%s - Settings"
 msgstr "CustomEPG v%s - Paramètres"
 
-#: ../settings.py:33
+#: ../settings.py:41
 msgid "Default setting for the maximum duration of displayed events."
 msgstr "Durée maximale par défaut des émissions affichées."
 
-#: ../settings.py:32
+#: ../settings.py:40
 msgid "Default setting for the minimum duration of displayed events."
 msgstr "Durée minimale par défaut des émissions affichées."
 
@@ -114,11 +118,11 @@ msgstr "Supprimer la liste '%s' ?"
 msgid "EPG for selected services"
 msgstr "EPG des chaînes sélectionnées"
 
-#: ../settings.py:89
+#: ../settings.py:103
 msgid "Event duration - temporary setting"
 msgstr "Durée des émissions - réglage temporaire"
 
-#: ../ui.py:202
+#: ../ui.py:203
 msgid "Filter by event duration"
 msgstr "Filtrer selon la durée des émissions"
 
@@ -130,19 +134,19 @@ msgstr "Terminées"
 msgid "Finished and ongoing"
 msgstr "Terminées et en cours"
 
-#: ../settings.py:31
+#: ../settings.py:37
 msgid "Hide events"
 msgstr "Masquer des émissions"
 
-#: ../settings.py:33 ../settings.py:95
+#: ../settings.py:41 ../settings.py:109
 msgid "Hide events longer than"
 msgstr "Masquer les émissions de plus de"
 
-#: ../settings.py:32 ../settings.py:93
+#: ../settings.py:40 ../settings.py:107
 msgid "Hide events shorter than"
 msgstr "Masquer les émissions de moins de"
 
-#: ../settings.py:31
+#: ../settings.py:37
 msgid "Hide finished events, or both finished and ongoing events."
 msgstr "Masquer les émissions terminées ou celles terminées et en cours."
 
@@ -151,11 +155,11 @@ msgstr "Masquer les émissions terminées ou celles terminées et en cours."
 msgid "Import all services from '%s'"
 msgstr "Importer toutes les chaînes de '%s'"
 
-#: ../configuration.py:18
+#: ../configuration.py:19
 msgid "Latin2"
 msgstr "Latin2"
 
-#: ../configuration.py:19
+#: ../configuration.py:20
 msgid "Latin2 with 'Ch'"
 msgstr "Latin2 avec 'Ch'"
 
@@ -171,7 +175,7 @@ msgstr "Charger une liste"
 msgid "MENU"
 msgstr "MENU"
 
-#: ../settings.py:51
+#: ../settings.py:61
 msgid "Maximum event duration must not be shorter than minimum event duration."
 msgstr "La durée maximale ne peut pas être inférieure à la durée minimale des émissions."
 
@@ -179,7 +183,7 @@ msgstr "La durée maximale ne peut pas être inférieure à la durée minimale d
 msgid "No"
 msgstr "Non"
 
-#: ../configuration.py:12
+#: ../configuration.py:13
 msgid "No limit"
 msgstr "Sans limite"
 
@@ -200,11 +204,11 @@ msgstr "Écraser la liste '%s' ?"
 msgid "Press BLUE to add a service from a bouquet."
 msgstr "Appuyez sur BLEU pour ajouter une chaîne depuis un bouquet."
 
-#: ../ui.py:199
+#: ../ui.py:200
 msgid "Preview service / return"
 msgstr "Aperçu de la chaîne / retour"
 
-#: ../ui.py:203
+#: ../ui.py:204
 msgid "Refresh EPG"
 msgstr ""
 
@@ -225,7 +229,7 @@ msgstr "Enregistrer"
 msgid "Save as list"
 msgstr "Enregistrer comme liste"
 
-#: ../ui.py:288
+#: ../ui.py:299
 msgid "Select action"
 msgstr "Choisir une action"
 
@@ -233,7 +237,7 @@ msgstr "Choisir une action"
 msgid "Select service for CustomEPG"
 msgstr "Choisissez une chaîne pour CustomEPG"
 
-#: ../ui.py:207
+#: ../ui.py:208
 msgid "Services"
 msgstr "Chaînes"
 
@@ -242,7 +246,11 @@ msgstr "Chaînes"
 msgid "Services: %d"
 msgstr "Chaînes : %d"
 
-#: ../ui.py:283 ../services.py:161
+#: ../settings.py:39
+msgid "Set cursor to the currently playing event when opening CustomEPG."
+msgstr ""
+
+#: ../ui.py:294 ../services.py:161
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -250,39 +258,39 @@ msgstr "Paramètres"
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr "Impossible de charger les paramètres. Corrigez le fichier de configuration avant d'enregistrer."
 
-#: ../settings.py:38
+#: ../settings.py:46
 msgid "Show in channels selection menu"
 msgstr "Afficher dans le menu de sélection des chaînes"
 
-#: ../settings.py:37
+#: ../settings.py:45
 msgid "Show in event menu"
 msgstr "Afficher dans le menu des événements"
 
-#: ../settings.py:36
+#: ../settings.py:44
 msgid "Show in extensions menu"
 msgstr "Afficher dans le menu des extensions"
 
-#: ../settings.py:38
+#: ../settings.py:46
 msgid "Show plugin 'CustomEPG' in the channel selection context menu."
 msgstr "Afficher le plugin 'CustomEPG' dans le menu contextuel de sélection des chaînes."
 
-#: ../settings.py:37
+#: ../settings.py:45
 msgid "Show plugin 'CustomEPG' in the event menu."
 msgstr "Afficher le plugin 'CustomEPG' dans le menu des événements."
 
-#: ../settings.py:36
+#: ../settings.py:44
 msgid "Show plugin 'CustomEPG' in the extension menu."
 msgstr "Afficher le plugin 'CustomEPG' dans le menu des extensions."
 
-#: ../settings.py:35
+#: ../settings.py:43
 msgid "Show rating column regardless of the selected sorting mode."
 msgstr ""
 
-#: ../configuration.py:16
+#: ../configuration.py:17
 msgid "Standard"
 msgstr "Standard"
 
-#: ../settings.py:94 ../settings.py:96
+#: ../settings.py:108 ../settings.py:110
 msgid "Temporary setting. Applies only until CustomEPG is closed."
 msgstr "Réglage temporaire. S'applique uniquement jusqu'à la fermeture de CustomEPG."
 
@@ -290,18 +298,18 @@ msgstr "Réglage temporaire. S'applique uniquement jusqu'à la fermeture de Cust
 msgid "This service is already selected."
 msgstr "Cette chaîne est déjà sélectionnée."
 
-#: ../ui.py:281
+#: ../ui.py:292
 msgid "Timer Overview"
 msgstr "Liste des programmations"
 
-#: ../ui.py:208 ../ui.py:395
+#: ../ui.py:209 ../ui.py:408
 msgid "Zap"
 msgstr "Zapper"
 
-#: ../ui.py:248
+#: ../ui.py:259
 msgid "by rating"
 msgstr "par classification d'âge"
 
-#: ../ui.py:248
+#: ../ui.py:259
 msgid "by time"
 msgstr "par heure"

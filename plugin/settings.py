@@ -36,7 +36,7 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		menu = []
 		menu.append((_("Hide events"), cfg.hide_started, _("Hide finished events, or both finished and ongoing events.")))
 		if cfg.hide_started.value != "true":
-			menu.append((4 * " " + _("Cursor on current service"), cfg.currentservice, _("Select the currently playing event when opening CustomEPG.")))
+			menu.append((4 * " " + _("Cursor on current service"), cfg.currentservice, _("Set cursor to the currently playing event when opening CustomEPG.")))
 		menu.append((_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")))
 		menu.append((_("Hide events longer than"), cfg.maximum_duration, _("Default setting for the maximum duration of displayed events.")))
 		menu.append((_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")))
