@@ -1,13 +1,13 @@
-# CustomEPG translations.
-# Copyright (C) 2026 CustomEPG contributors
-# This file is distributed under the same license as the CustomEPG package.
+# TimerPlanner translations.
+# Copyright (C) 2026 TimerPlanner contributors
+# This file is distributed under the same license as the TimerPlanner package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: CustomEPG\n"
+"Project-Id-Version: TimerPlanner\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 22:16+0100\n"
-"PO-Revision-Date: 2026-11-08 20:27+0100\n"
+"POT-Creation-Date: 2026-11-13 12:13+0100\n"
+"PO-Revision-Date: 2026-11-13 12:17+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: Français\n"
 "Language: fr\n"
@@ -61,19 +61,19 @@ msgstr ""
 #: ../ui.py:230 ../services.py:142
 #, python-format
 msgid ""
-"Cannot load CustomEPG settings:\n"
+"Cannot load TimerPlanner settings:\n"
 "%s"
 msgstr ""
-"Impossible de charger les paramètres de CustomEPG :\n"
+"Impossible de charger les paramètres de TimerPlanner :\n"
 "%s"
 
 #: ../services.py:287
 #, python-format
 msgid ""
-"Cannot save CustomEPG settings:\n"
+"Cannot save TimerPlanner settings:\n"
 "%s"
 msgstr ""
-"Impossible d'enregistrer les paramètres de CustomEPG :\n"
+"Impossible d'enregistrer les paramètres de TimerPlanner :\n"
 "%s"
 
 #: ../settings.py:80 ../services.py:293
@@ -83,19 +83,6 @@ msgstr "Fermer sans enregistrer les modifications ?"
 #: ../settings.py:39
 msgid "Cursor on current service"
 msgstr ""
-
-#: ../plugin.py:19
-msgid "CustomEPG"
-msgstr "CustomEPG"
-
-#: ../services.py:97 ../services.py:157
-msgid "CustomEPG - Services"
-msgstr "CustomEPG - Chaînes"
-
-#: ../settings.py:29
-#, python-format
-msgid "CustomEPG v%s - Settings"
-msgstr "CustomEPG v%s - Paramètres"
 
 #: ../settings.py:41
 msgid "Default setting for the maximum duration of displayed events."
@@ -113,10 +100,6 @@ msgstr "Supprimer la liste"
 #, python-format
 msgid "Delete list '%s'?"
 msgstr "Supprimer la liste '%s' ?"
-
-#: ../plugin.py:20
-msgid "EPG for selected services"
-msgstr "EPG des chaînes sélectionnées"
 
 #: ../settings.py:103
 msgid "Event duration - temporary setting"
@@ -234,8 +217,8 @@ msgid "Select action"
 msgstr "Choisir une action"
 
 #: ../services.py:36 ../services.py:48
-msgid "Select service for CustomEPG"
-msgstr "Choisissez une chaîne pour CustomEPG"
+msgid "Select service for TimerPlanner"
+msgstr "Choisissez une chaîne pour TimerPlanner"
 
 #: ../ui.py:208
 msgid "Services"
@@ -247,7 +230,7 @@ msgid "Services: %d"
 msgstr "Chaînes : %d"
 
 #: ../settings.py:39
-msgid "Set cursor to the currently playing event when opening CustomEPG."
+msgid "Set cursor to the currently playing event when opening TimerPlanner."
 msgstr ""
 
 #: ../ui.py:294 ../services.py:161
@@ -271,16 +254,16 @@ msgid "Show in extensions menu"
 msgstr "Afficher dans le menu des extensions"
 
 #: ../settings.py:46
-msgid "Show plugin 'CustomEPG' in the channel selection context menu."
-msgstr "Afficher le plugin 'CustomEPG' dans le menu contextuel de sélection des chaînes."
+msgid "Show plugin 'TimerPlanner' in the channel selection context menu."
+msgstr "Afficher le plugin 'TimerPlanner' dans le menu contextuel de sélection des chaînes."
 
 #: ../settings.py:45
-msgid "Show plugin 'CustomEPG' in the event menu."
-msgstr "Afficher le plugin 'CustomEPG' dans le menu des événements."
+msgid "Show plugin 'TimerPlanner' in the event menu."
+msgstr "Afficher le plugin 'TimerPlanner' dans le menu des événements."
 
 #: ../settings.py:44
-msgid "Show plugin 'CustomEPG' in the extension menu."
-msgstr "Afficher le plugin 'CustomEPG' dans le menu des extensions."
+msgid "Show plugin 'TimerPlanner' in the extension menu."
+msgstr "Afficher le plugin 'TimerPlanner' dans le menu des extensions."
 
 #: ../settings.py:43
 msgid "Show rating column regardless of the selected sorting mode."
@@ -291,8 +274,8 @@ msgid "Standard"
 msgstr "Standard"
 
 #: ../settings.py:108 ../settings.py:110
-msgid "Temporary setting. Applies only until CustomEPG is closed."
-msgstr "Réglage temporaire. S'applique uniquement jusqu'à la fermeture de CustomEPG."
+msgid "Temporary setting. Applies only until TimerPlanner is closed."
+msgstr "Réglage temporaire. S'applique uniquement jusqu'à la fermeture de TimerPlanner."
 
 #: ../services.py:270
 msgid "This service is already selected."
@@ -301,6 +284,23 @@ msgstr "Cette chaîne est déjà sélectionnée."
 #: ../ui.py:292
 msgid "Timer Overview"
 msgstr "Liste des programmations"
+
+#: ../plugin.py:20
+msgid "Timer planner for selected services"
+msgstr "Timer planner des chaînes sélectionnées"
+
+#: ../plugin.py:19
+msgid "TimerPlanner"
+msgstr "TimerPlanner"
+
+#: ../services.py:97 ../services.py:157
+msgid "TimerPlanner - Services"
+msgstr "TimerPlanner - Chaînes"
+
+#: ../settings.py:29
+#, python-format
+msgid "TimerPlanner v%s - Settings"
+msgstr "TimerPlanner v%s - Paramètres"
 
 #: ../ui.py:209 ../ui.py:408
 msgid "Zap"

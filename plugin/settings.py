@@ -11,8 +11,8 @@ from . import _
 from .configuration import cfg, duration_choices
 from .ui import VERSION
 
-class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
-	skin = """<screen name="CustomEPGSetup" position="center,center" size="600,300" title="CustomEPG - Settings">
+class TimerPlannerSetup(Screen, ConfigListScreen, HelpableScreen):
+	skin = """<screen name="TimerPlannerSetup" position="center,center" size="600,300" title="TimerPlanner - Settings">
 		<widget source="key_red" render="Label" position="10,10" size="280,32" font="Regular;20" backgroundColor="#9f1313" halign="center" valign="center" />
 		<widget source="key_green" render="Label" position="310,10" size="280,32" font="Regular;20" backgroundColor="#176517" halign="center" valign="center" />
 		<widget name="config" position="10,55" size="580,110" scrollbarMode="showOnDemand" />
@@ -22,11 +22,11 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		HelpableScreen.__init__(self)
-		self.skinName = ["CustomEPGSetup", "Setup"]
+		self.skinName = ["TimerPlannerSetup", "Setup"]
 		self["description"] = Label()
 		self["key_yellow"] = StaticText("")
 		self["key_blue"] = StaticText("")
-		self.setTitle(_("CustomEPG v%s - Settings") % VERSION)
+		self.setTitle(_("TimerPlanner v%s - Settings") % VERSION)
 		self.entries = self.createSetup()
 		ConfigListScreen.__init__(self, self.entries, session=session, on_change=self.configChanged, fullUI=True)
 		self["config"].onSelectionChanged.append(self.selectionChanged)
@@ -36,14 +36,14 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		menu = []
 		menu.append((_("Hide events"), cfg.hide_started, _("Hide finished events, or both finished and ongoing events.")))
 		if cfg.hide_started.value != "true":
-			menu.append((4 * " " + _("Cursor on current service"), cfg.currentservice, _("Set cursor to the currently playing event when opening CustomEPG.")))
+			menu.append((4 * " " + _("Cursor on current service"), cfg.currentservice, _("Set cursor to the currently playing event when opening TimerPlanner.")))
 		menu.append((_("Hide events shorter than"), cfg.minimum_duration, _("Default setting for the minimum duration of displayed events.")))
 		menu.append((_("Hide events longer than"), cfg.maximum_duration, _("Default setting for the maximum duration of displayed events.")))
 		menu.append((_("Alphabetical sorting"), cfg.alphabetsort, _("Applies to 'A-Z' only. 'Standard' disables character conversion.")))
 		menu.append((_("Always show rating"), cfg.showrating, _("Show rating column regardless of the selected sorting mode.")))
-		menu.append((_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'CustomEPG' in the extension menu.")))
-		menu.append((_("Show in event menu"), cfg.eventmenu, _("Show plugin 'CustomEPG' in the event menu.")))
-		menu.append((_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show plugin 'CustomEPG' in the channel selection context menu.")))
+		menu.append((_("Show in extensions menu"), cfg.extensionsmenu, _("Show plugin 'TimerPlanner' in the extension menu.")))
+		menu.append((_("Show in event menu"), cfg.eventmenu, _("Show plugin 'TimerPlanner' in the event menu.")))
+		menu.append((_("Show in channels selection menu"), cfg.channelcontextmenu, _("Show plugin 'TimerPlanner' in the channel selection context menu.")))
 		return menu
 
 	def selectionChanged(self):
@@ -96,18 +96,18 @@ class CustomEPGSetup(Screen, ConfigListScreen, HelpableScreen):
 		plugins.readPluginList(resolveFilename(SCOPE_PLUGINS))
 
 
-class CustomEPGDurationSetup(CustomEPGSetup):
+class TimerPlannerDurationSetup(TimerPlannerSetup):
 
 	def __init__(self, session, minimum, maximum):
-		CustomEPGSetup.__init__(self, session)
+		TimerPlannerSetup.__init__(self, session)
 		self.setTitle(_("Event duration - temporary setting"))
 		self.duration = ConfigSelection(default=str(minimum), choices=duration_choices)
 		self.maximum = ConfigSelection(default=str(maximum), choices=duration_choices)
 		self.entries = [
 			getConfigListEntry(_("Hide events shorter than"), self.duration,
-				_("Temporary setting. Applies only until CustomEPG is closed.")),
+				_("Temporary setting. Applies only until TimerPlanner is closed.")),
 			getConfigListEntry(_("Hide events longer than"), self.maximum,
-				_("Temporary setting. Applies only until CustomEPG is closed.")),
+				_("Temporary setting. Applies only until TimerPlanner is closed.")),
 		]
 		self["config"].setList(self.entries)
 		self["key_green"].setText(_("Apply"))

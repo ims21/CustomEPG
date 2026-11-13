@@ -12,17 +12,17 @@ def load_services(path):
 		return []
 	except ET.ParseError as error:
 		raise ValueError(str(error)) from error
-	if root.tag != "customepg" or root.get("version", "1") != "1":
-		raise ValueError("Unsupported CustomEPG settings format")
+	if root.tag != "timerplanner" or root.get("version", "1") != "1":
+		raise ValueError("Unsupported TimerPlanner settings format")
 	container = root.find("services")
 	if container is None:
-		raise ValueError("Missing CustomEPG service list")
+		raise ValueError("Missing TimerPlanner service list")
 	services = []
 	seen = set()
 	for node in container:
 		ref = node.get("reference")
 		if node.tag != "service" or not ref:
-			raise ValueError("Invalid CustomEPG service entry")
+			raise ValueError("Invalid TimerPlanner service entry")
 		if ref not in seen:
 			services.append((ref, node.get("name", "")))
 			seen.add(ref)
@@ -37,15 +37,15 @@ def load_legacy_services(path):
 	except FileNotFoundError:
 		return []
 	if not isinstance(data, dict) or data.get("version") != 1:
-		raise ValueError("Unsupported CustomEPG settings format")
+		raise ValueError("Unsupported TimerPlanner settings format")
 	services = data.get("services")
 	if not isinstance(services, list) or any(not isinstance(ref, str) or not ref for ref in services):
-		raise ValueError("Invalid CustomEPG service list")
+		raise ValueError("Invalid TimerPlanner service list")
 	return [(ref, "") for ref in dict.fromkeys(services)]
 
 
 def save_services(path, services):
-	root = ET.Element("customepg", version="1")
+	root = ET.Element("timerplanner", version="1")
 	root.text = "\n\t"
 	container = ET.SubElement(root, "services")
 	container.text = "\n\t\t" if services else None
@@ -56,7 +56,7 @@ def save_services(path, services):
 	if len(container):
 		container[-1].tail = "\n\t"
 	# Replace only after a complete write; unsuccessful saves preserve the old file.
-	fd, temporary = tempfile.mkstemp(prefix=".customepg-", dir=os.path.dirname(path))
+	fd, temporary = tempfile.mkstemp(prefix=".timerplanner-", dir=os.path.dirname(path))
 	try:
 		with os.fdopen(fd, "wb") as target:
 			os.fchmod(target.fileno(), 0o644)

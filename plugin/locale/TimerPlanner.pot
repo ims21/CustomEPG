@@ -1,33 +1,34 @@
-# CustomEPG translations.
-# Copyright (C) 2026 CustomEPG contributors
-# This file is distributed under the same license as the CustomEPG package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CustomEPG\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 22:16+0100\n"
-"PO-Revision-Date: 2026-11-08 20:27+0100\n"
-"Last-Translator: ims <ims@openpli.org>\n"
-"Language-Team: Nederlands\n"
-"Language: nl\n"
+"POT-Creation-Date: 2026-11-13 12:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.10\n"
 
 #: ../configuration.py:13
 #, python-format
 msgid "%d min"
-msgstr "%d min"
+msgstr ""
 
 #: ../services.py:118
 msgid "Add"
-msgstr "Toevoegen"
+msgstr ""
 
 #: ../settings.py:42
 msgid "Alphabetical sorting"
-msgstr "Alfabetisch sorteren"
+msgstr ""
 
 #: ../settings.py:43
 msgid "Always show rating"
@@ -35,19 +36,19 @@ msgstr ""
 
 #: ../settings.py:42
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
-msgstr "Geldt alleen voor 'A-Z'. 'Standaard' schakelt tekenomzetting uit."
+msgstr ""
 
 #: ../settings.py:113
 msgid "Apply"
-msgstr "Toepassen"
+msgstr ""
 
 #: ../configuration.py:18
 msgid "CS/SK"
-msgstr "CS/SK"
+msgstr ""
 
 #: ../services.py:115
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr ""
 
 #: ../services.py:169
 #, python-format
@@ -55,158 +56,135 @@ msgid ""
 "Cannot access service list:\n"
 "%s"
 msgstr ""
-"Kan de zenderlijst niet openen:\n"
-"%s"
 
 #: ../ui.py:230 ../services.py:142
 #, python-format
 msgid ""
-"Cannot load CustomEPG settings:\n"
+"Cannot load TimerPlanner settings:\n"
 "%s"
 msgstr ""
-"Kan de instellingen van CustomEPG niet laden:\n"
-"%s"
 
 #: ../services.py:287
 #, python-format
 msgid ""
-"Cannot save CustomEPG settings:\n"
+"Cannot save TimerPlanner settings:\n"
 "%s"
 msgstr ""
-"Kan de instellingen van CustomEPG niet opslaan:\n"
-"%s"
 
 #: ../settings.py:80 ../services.py:293
 msgid "Close without saving changes?"
-msgstr "Afsluiten zonder de wijzigingen op te slaan?"
+msgstr ""
 
 #: ../settings.py:39
 msgid "Cursor on current service"
 msgstr ""
 
-#: ../plugin.py:19
-msgid "CustomEPG"
-msgstr "CustomEPG"
-
-#: ../services.py:97 ../services.py:157
-msgid "CustomEPG - Services"
-msgstr "CustomEPG - Zenders"
-
-#: ../settings.py:29
-#, python-format
-msgid "CustomEPG v%s - Settings"
-msgstr "CustomEPG v%s - Instellingen"
-
 #: ../settings.py:41
 msgid "Default setting for the maximum duration of displayed events."
-msgstr "Standaardinstelling voor de maximale duur van weergegeven programma's."
+msgstr ""
 
 #: ../settings.py:40
 msgid "Default setting for the minimum duration of displayed events."
-msgstr "Standaardinstelling voor de minimale duur van weergegeven programma's."
+msgstr ""
 
 #: ../services.py:160 ../services.py:229
 msgid "Delete list"
-msgstr "Lijst verwijderen"
+msgstr ""
 
 #: ../services.py:234
 #, python-format
 msgid "Delete list '%s'?"
-msgstr "Lijst '%s' verwijderen?"
-
-#: ../plugin.py:20
-msgid "EPG for selected services"
-msgstr "EPG voor geselecteerde zenders"
+msgstr ""
 
 #: ../settings.py:103
 msgid "Event duration - temporary setting"
-msgstr "Programmaduur - tijdelijke instelling"
+msgstr ""
 
 #: ../ui.py:203
 msgid "Filter by event duration"
-msgstr "Filteren op programmaduur"
+msgstr ""
 
 #: ../configuration.py:9
 msgid "Finished"
-msgstr "Afgelopen"
+msgstr ""
 
 #: ../configuration.py:10
 msgid "Finished and ongoing"
-msgstr "Afgelopen en lopend"
+msgstr ""
 
 #: ../settings.py:37
 msgid "Hide events"
-msgstr "Programma's verbergen"
+msgstr ""
 
 #: ../settings.py:41 ../settings.py:109
 msgid "Hide events longer than"
-msgstr "Verberg programma's langer dan"
+msgstr ""
 
 #: ../settings.py:40 ../settings.py:107
 msgid "Hide events shorter than"
-msgstr "Verberg programma's korter dan"
+msgstr ""
 
 #: ../settings.py:37
 msgid "Hide finished events, or both finished and ongoing events."
-msgstr "Verberg afgelopen programma's of zowel afgelopen als lopende programma's."
+msgstr ""
 
 #: ../services.py:56
 #, python-format
 msgid "Import all services from '%s'"
-msgstr "Alle zenders uit '%s' importeren"
+msgstr ""
 
 #: ../configuration.py:19
 msgid "Latin2"
-msgstr "Latin2"
+msgstr ""
 
 #: ../configuration.py:20
 msgid "Latin2 with 'Ch'"
-msgstr "Latin2 met 'Ch'"
+msgstr ""
 
 #: ../services.py:174
 msgid "List name"
-msgstr "Lijstnaam"
+msgstr ""
 
 #: ../services.py:159 ../services.py:210
 msgid "Load list"
-msgstr "Lijst laden"
+msgstr ""
 
 #: ../services.py:41
 msgid "MENU"
-msgstr "MENU"
+msgstr ""
 
 #: ../settings.py:61
 msgid "Maximum event duration must not be shorter than minimum event duration."
-msgstr "De maximale programmaduur mag niet korter zijn dan de minimale programmaduur."
+msgstr ""
 
 #: ../configuration.py:8
 msgid "No"
-msgstr "Nee"
+msgstr ""
 
 #: ../configuration.py:13
 msgid "No limit"
-msgstr "Geen limiet"
+msgstr ""
 
 #: ../services.py:207
 msgid "No saved service lists."
-msgstr "Geen opgeslagen zenderlijsten."
+msgstr ""
 
 #: ../services.py:46
 msgid "OK: open bouquet and select a service, MENU: Import all services"
-msgstr "OK: boeket openen en zender kiezen, MENU: alle zenders importeren"
+msgstr ""
 
 #: ../services.py:187
 #, python-format
 msgid "Overwrite list '%s'?"
-msgstr "Lijst '%s' overschrijven?"
+msgstr ""
 
 #: ../services.py:153
 msgid "Press BLUE to add a service from a bouquet."
-msgstr "Druk op BLAUW om een zender uit een boeket toe te voegen."
+msgstr ""
 
 #: ../ui.py:200
 msgid "Preview service / return"
-msgstr "Zender bekijken / terug"
+msgstr ""
 
 #: ../ui.py:204
 msgid "Refresh EPG"
@@ -214,73 +192,73 @@ msgstr ""
 
 #: ../services.py:117
 msgid "Remove"
-msgstr "Verwijderen"
+msgstr ""
 
 #: ../services.py:216
 #, python-format
 msgid "Replace the current selection with list '%s'?"
-msgstr "Huidige selectie vervangen door lijst '%s'?"
+msgstr ""
 
 #: ../services.py:116
 msgid "Save"
-msgstr "Opslaan"
+msgstr ""
 
 #: ../services.py:158
 msgid "Save as list"
-msgstr "Opslaan als lijst"
+msgstr ""
 
 #: ../ui.py:299
 msgid "Select action"
-msgstr "Actie selecteren"
+msgstr ""
 
 #: ../services.py:36 ../services.py:48
-msgid "Select service for CustomEPG"
-msgstr "Kies een zender voor CustomEPG"
+msgid "Select service for TimerPlanner"
+msgstr ""
 
 #: ../ui.py:208
 msgid "Services"
-msgstr "Zenders"
+msgstr ""
 
 #: ../services.py:153
 #, python-format
 msgid "Services: %d"
-msgstr "Zenders: %d"
+msgstr ""
 
 #: ../settings.py:39
-msgid "Set cursor to the currently playing event when opening CustomEPG."
+msgid "Set cursor to the currently playing event when opening TimerPlanner."
 msgstr ""
 
 #: ../ui.py:294 ../services.py:161
 msgid "Settings"
-msgstr "Instellingen"
+msgstr ""
 
 #: ../services.py:282
 msgid "Settings could not be loaded. Fix the settings file before saving."
-msgstr "De instellingen konden niet worden geladen. Herstel het instellingenbestand voordat u opslaat."
+msgstr ""
 
 #: ../settings.py:46
 msgid "Show in channels selection menu"
-msgstr "Weergeven in het zenderkeuzemenu"
+msgstr ""
 
 #: ../settings.py:45
 msgid "Show in event menu"
-msgstr "Weergeven in het programmamenu"
+msgstr ""
 
 #: ../settings.py:44
 msgid "Show in extensions menu"
-msgstr "Weergeven in het uitbreidingenmenu"
+msgstr ""
 
 #: ../settings.py:46
-msgid "Show plugin 'CustomEPG' in the channel selection context menu."
-msgstr "Plugin 'CustomEPG' weergeven in het contextmenu van de zenderkeuze."
+msgid "Show plugin 'TimerPlanner' in the channel selection context menu."
+msgstr ""
 
 #: ../settings.py:45
-msgid "Show plugin 'CustomEPG' in the event menu."
-msgstr "Plugin 'CustomEPG' weergeven in het programmamenu."
+msgid "Show plugin 'TimerPlanner' in the event menu."
+msgstr ""
 
 #: ../settings.py:44
-msgid "Show plugin 'CustomEPG' in the extension menu."
-msgstr "Plugin 'CustomEPG' weergeven in het uitbreidingenmenu."
+msgid "Show plugin 'TimerPlanner' in the extension menu."
+msgstr ""
 
 #: ../settings.py:43
 msgid "Show rating column regardless of the selected sorting mode."
@@ -288,28 +266,45 @@ msgstr ""
 
 #: ../configuration.py:17
 msgid "Standard"
-msgstr "Standaard"
+msgstr ""
 
 #: ../settings.py:108 ../settings.py:110
-msgid "Temporary setting. Applies only until CustomEPG is closed."
-msgstr "Tijdelijke instelling. Geldt alleen totdat CustomEPG wordt afgesloten."
+msgid "Temporary setting. Applies only until TimerPlanner is closed."
+msgstr ""
 
 #: ../services.py:270
 msgid "This service is already selected."
-msgstr "Deze zender is al geselecteerd."
+msgstr ""
 
 #: ../ui.py:292
 msgid "Timer Overview"
-msgstr "Timeroverzicht"
+msgstr ""
+
+#: ../plugin.py:20
+msgid "Timer planner for selected services"
+msgstr ""
+
+#: ../plugin.py:19
+msgid "TimerPlanner"
+msgstr ""
+
+#: ../services.py:97 ../services.py:157
+msgid "TimerPlanner - Services"
+msgstr ""
+
+#: ../settings.py:29
+#, python-format
+msgid "TimerPlanner v%s - Settings"
+msgstr ""
 
 #: ../ui.py:209 ../ui.py:408
 msgid "Zap"
-msgstr "Zappen"
+msgstr ""
 
 #: ../ui.py:259
 msgid "by rating"
-msgstr "op leeftijdsclassificatie"
+msgstr ""
 
 #: ../ui.py:259
 msgid "by time"
-msgstr "op tijd"
+msgstr ""

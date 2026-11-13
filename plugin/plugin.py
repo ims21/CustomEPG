@@ -5,8 +5,8 @@ from .configuration import cfg
 
 
 def main(session, **kwargs):
-	from .ui import CustomEPGSelection
-	session.open(CustomEPGSelection)
+	from .ui import TimerPlannerSelection
+	session.open(TimerPlannerSelection)
 
 
 def extensionsMain(session, **kwargs):
@@ -16,9 +16,9 @@ def extensionsMain(session, **kwargs):
 
 
 def Plugins(**kwargs):
-	name=_("CustomEPG")
-	descr=_("EPG for selected services")
-	pluginList = [PluginDescriptor(name=name, description=descr, where=[PluginDescriptor.WHERE_PLUGINMENU], icon="custepg.png", fnc=main)]
+	name=_("TimerPlanner")
+	descr=_("Timer planner for selected services")
+	pluginList = [PluginDescriptor(name=name, description=descr, where=[PluginDescriptor.WHERE_PLUGINMENU], icon="timerplanner.png", fnc=main)]
 	if cfg.extensionsmenu.value:
 		pluginList.append(PluginDescriptor(name=name, description=descr, where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=extensionsMain, needsRestart=False))
 	if cfg.eventmenu.value:

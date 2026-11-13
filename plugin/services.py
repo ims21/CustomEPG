@@ -30,12 +30,12 @@ def service_name(ref):
 	return name.replace("\xc2\x86", "").replace("\xc2\x87", "").replace("\x86", "").replace("\x87", "")
 
 
-class CustomEPGChannelSelection(SimpleChannelSelection):
+class TimerPlannerChannelSelection(SimpleChannelSelection):
 	"""Return one service or the individual services of a bouquet."""
 	def __init__(self, session):
-		SimpleChannelSelection.__init__(self, session, _("Select service for CustomEPG"))
+		SimpleChannelSelection.__init__(self, session, _("Select service for TimerPlanner"))
 		self.skinName = "SimpleChannelSelection"
-		self["customEPGMenuActions"] = ActionMap(["MenuActions"], {
+		self["TimerPlannerMenuActions"] = ActionMap(["MenuActions"], {
 			"menu": self.openBouquetMenu,
 		}, -2)
 		self["key_menu"] = StaticText(_("MENU"))
@@ -45,7 +45,7 @@ class CustomEPGChannelSelection(SimpleChannelSelection):
 		if root is not None and 'FROM BOUQUET "bouquets.' in root.getPath():
 			self.setTitle(_("OK: open bouquet and select a service, MENU: Import all services"))
 		else:
-			self.setTitle(_("Select service for CustomEPG"))
+			self.setTitle(_("Select service for TimerPlanner"))
 
 	def openBouquetMenu(self):
 		ref = self.getCurrentSelection()
@@ -81,8 +81,8 @@ class CustomEPGChannelSelection(SimpleChannelSelection):
 			self.close(ref)
 
 
-class CustomEPGServiceEditor(Screen):
-	skin = """<screen name="CustomEPGServiceEditor" position="center,center" size="600,440" title="CustomEPG">
+class TimerPlannerServiceEditor(Screen):
+	skin = """<screen name="TimerPlannerServiceEditor" position="center,center" size="600,440" title="TimerPlanner">
 		<widget source="key_red" render="Label" position="10,10" size="140,32" font="Regular;20" backgroundColor="#9f1313" halign="center" valign="center" />
 		<widget source="key_green" render="Label" position="155,10" size="140,32" font="Regular;20" backgroundColor="#176517" halign="center" valign="center" />
 		<widget source="key_yellow" render="Label" position="300,10" size="140,32" font="Regular;20" backgroundColor="#8f7700" halign="center" valign="center" />
@@ -93,21 +93,21 @@ class CustomEPGServiceEditor(Screen):
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skinName = ["CustomEPGServiceEditor", "Setup"]
-		self.setTitle(_("CustomEPG - Services"))
+		self.skinName = ["TimerPlannerServiceEditor", "Setup"]
+		self.setTitle(_("TimerPlanner - Services"))
 		self["description"] = Label()
 		self["HelpWindow"] = Pixmap()
 		self["HelpWindow"].hide()
 		self["VKeyIcon"] = Boolean(False)
-		self.path = resolveFilename(SCOPE_CONFIG, "customepg.xml")
-		self.lists_directory = resolveFilename(SCOPE_CONFIG, "customepg_lists")
+		self.path = resolveFilename(SCOPE_CONFIG, "timerplanner.xml")
+		self.lists_directory = resolveFilename(SCOPE_CONFIG, "timerplanner_lists")
 		self.load_error = None
 		try:
 			if exists(self.path):
 				self.services = load_services(self.path)
 			else:
 				self.services = [(ref, service_name(ref)) for ref, name in
-					load_legacy_services(resolveFilename(SCOPE_CONFIG, "customepg.json"))]
+					load_legacy_services(resolveFilename(SCOPE_CONFIG, "timerplanner.json"))]
 		except (OSError, ValueError) as error:
 			self.services = []
 			self.load_error = str(error)
@@ -139,7 +139,7 @@ class CustomEPGServiceEditor(Screen):
 
 	def reportLoadError(self):
 		if self.load_error:
-			self.session.open(MessageBox, _("Cannot load CustomEPG settings:\n%s") % self.load_error, MessageBox.TYPE_ERROR)
+			self.session.open(MessageBox, _("Cannot load TimerPlanner settings:\n%s") % self.load_error, MessageBox.TYPE_ERROR)
 
 	def refresh(self, index=0):
 		rows = []
@@ -154,7 +154,7 @@ class CustomEPGServiceEditor(Screen):
 
 	def openMenu(self):
 		self.session.openWithCallback(self.menuSelected, ChoiceBox,
-			title=_("CustomEPG - Services"), list=[
+			title=_("TimerPlanner - Services"), list=[
 				(_("Save as list"), self.saveAsList),
 				(_("Load list"), self.chooseLoadList),
 				(_("Delete list"), self.chooseDeleteList),
@@ -240,11 +240,11 @@ class CustomEPGServiceEditor(Screen):
 			self.listError(error)
 
 	def openSettings(self):
-		from .settings import CustomEPGSetup
-		self.session.open(CustomEPGSetup)
+		from .settings import TimerPlannerSetup
+		self.session.open(TimerPlannerSetup)
 
 	def add(self):
-		self.session.openWithCallback(self.serviceSelected, CustomEPGChannelSelection)
+		self.session.openWithCallback(self.serviceSelected, TimerPlannerChannelSelection)
 
 	def serviceSelected(self, ref=None):
 		# compare strings ignore display names; retain the full reference (including IPTV URL).
@@ -284,7 +284,7 @@ class CustomEPGServiceEditor(Screen):
 		try:
 			save_services(self.path, self.services)
 		except OSError as error:
-			self.session.open(MessageBox, _("Cannot save CustomEPG settings:\n%s") % error, MessageBox.TYPE_ERROR)
+			self.session.open(MessageBox, _("Cannot save TimerPlanner settings:\n%s") % error, MessageBox.TYPE_ERROR)
 			return
 		self.close(True)
 

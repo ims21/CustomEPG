@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 22:16+0100\n"
-"PO-Revision-Date: 2026-11-11 22:18+0100\n"
+"POT-Creation-Date: 2026-11-13 12:13+0100\n"
+"PO-Revision-Date: 2026-11-13 12:14+0100\n"
 "Last-Translator: ims <ims@openpli.org>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -62,19 +62,19 @@ msgstr ""
 #: ../ui.py:230 ../services.py:142
 #, python-format
 msgid ""
-"Cannot load CustomEPG settings:\n"
+"Cannot load TimerPlanner settings:\n"
 "%s"
 msgstr ""
-"Nelze načíst nastavení CustomEPG:\n"
+"Nelze načíst nastavení TimerPlanner:\n"
 "%s"
 
 #: ../services.py:287
 #, python-format
 msgid ""
-"Cannot save CustomEPG settings:\n"
+"Cannot save TimerPlanner settings:\n"
 "%s"
 msgstr ""
-"Nelze uložit nastavení CustomEPG:\n"
+"Nelze uložit nastavení TimerPlanner:\n"
 "%s"
 
 #: ../settings.py:80 ../services.py:293
@@ -84,19 +84,6 @@ msgstr "Zavřít bez uložení?"
 #: ../settings.py:39
 msgid "Cursor on current service"
 msgstr "Kurzor na aktuální program"
-
-#: ../plugin.py:19
-msgid "CustomEPG"
-msgstr "CustomEPG"
-
-#: ../services.py:97 ../services.py:157
-msgid "CustomEPG - Services"
-msgstr "CustomEPG - Programy"
-
-#: ../settings.py:29
-#, python-format
-msgid "CustomEPG v%s - Settings"
-msgstr "CustomEPG v%s - nastavení"
 
 #: ../settings.py:41
 msgid "Default setting for the maximum duration of displayed events."
@@ -114,10 +101,6 @@ msgstr "Smazat seznam"
 #, python-format
 msgid "Delete list '%s'?"
 msgstr "Opravdu smazat seznam '%s'?"
-
-#: ../plugin.py:20
-msgid "EPG for selected services"
-msgstr "EPG pro zvolené programy"
 
 #: ../settings.py:103
 msgid "Event duration - temporary setting"
@@ -235,8 +218,8 @@ msgid "Select action"
 msgstr ""
 
 #: ../services.py:36 ../services.py:48
-msgid "Select service for CustomEPG"
-msgstr "Vyberte program pro CustomEPG"
+msgid "Select service for TimerPlanner"
+msgstr "Vyberte program pro TimerPlanner"
 
 #: ../ui.py:208
 msgid "Services"
@@ -248,7 +231,7 @@ msgid "Services: %d"
 msgstr "Programy: %d"
 
 #: ../settings.py:39
-msgid "Set cursor to the currently playing event when opening CustomEPG."
+msgid "Set cursor to the currently playing event when opening TimerPlanner."
 msgstr "Při otevření pluginu umístit kurzor na právě přehrávaný pořad."
 
 #: ../ui.py:294 ../services.py:161
@@ -272,16 +255,16 @@ msgid "Show in extensions menu"
 msgstr "Zobrazovat v menu rozšíření"
 
 #: ../settings.py:46
-msgid "Show plugin 'CustomEPG' in the channel selection context menu."
-msgstr "Zobrazovat plugin 'CustomEPG' v menu výběru kanálů."
+msgid "Show plugin 'TimerPlanner' in the channel selection context menu."
+msgstr "Zobrazovat plugin 'TimerPlanner' v menu výběru kanálů."
 
 #: ../settings.py:45
-msgid "Show plugin 'CustomEPG' in the event menu."
-msgstr "Zobrazovat plugin 'CustomEPG' v event menu."
+msgid "Show plugin 'TimerPlanner' in the event menu."
+msgstr "Zobrazovat plugin 'TimerPlanner' v event menu."
 
 #: ../settings.py:44
-msgid "Show plugin 'CustomEPG' in the extension menu."
-msgstr "Zobrazovat plugin 'CustomEPG' v menu rozšíření."
+msgid "Show plugin 'TimerPlanner' in the extension menu."
+msgstr "Zobrazovat plugin 'TimerPlanner' v menu rozšíření."
 
 #: ../settings.py:43
 msgid "Show rating column regardless of the selected sorting mode."
@@ -292,7 +275,7 @@ msgid "Standard"
 msgstr "Standardní"
 
 #: ../settings.py:108 ../settings.py:110
-msgid "Temporary setting. Applies only until CustomEPG is closed."
+msgid "Temporary setting. Applies only until TimerPlanner is closed."
 msgstr "Dočasné nastavení. Používá se pouze do zavření pluginu."
 
 #: ../services.py:270
@@ -302,6 +285,23 @@ msgstr "Tento program je již vybrán."
 #: ../ui.py:292
 msgid "Timer Overview"
 msgstr ""
+
+#: ../plugin.py:20
+msgid "Timer planner for selected services"
+msgstr "Plánovač časovačů pro zvolené programy"
+
+#: ../plugin.py:19
+msgid "TimerPlanner"
+msgstr "TimerPlanner"
+
+#: ../services.py:97 ../services.py:157
+msgid "TimerPlanner - Services"
+msgstr "TimerPlanner - Programy"
+
+#: ../settings.py:29
+#, python-format
+msgid "TimerPlanner v%s - Settings"
+msgstr "TimerPlanner v%s - nastavení"
 
 #: ../ui.py:209 ../ui.py:408
 msgid "Zap"

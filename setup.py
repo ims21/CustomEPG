@@ -1,10 +1,10 @@
 from distutils.core import setup
 import setup_translate
 
-pkg = 'Extensions.CustomEPG'
-setup (name = 'enigma2-plugin-extensions-customepg',
-	version = '1.01',
-	description = 'EPG for selected services',
+pkg = 'Extensions.TimerPlanner'
+setup (name = 'enigma2-plugin-extensions-timerplanner',
+	version = '1.02',
+	description = 'Timer planner for selected services',
 	packages = [pkg],
 	package_dir = {pkg: 'plugin'},
 	package_data = {pkg: ['*.png', 'locale/*.pot', 'locale/*/LC_MESSAGES/*.mo']},

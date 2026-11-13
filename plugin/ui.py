@@ -14,12 +14,12 @@ from skin import applySkinFactor, parseScale
 from . import _
 from .configuration import cfg
 from .epgdata import collect_events, event_key, selection_index, sort_events
-from .services import CustomEPGServiceEditor, service_name
+from .services import TimerPlannerServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "1.01"
+VERSION = "1.02"
 
-class CustomEPGList(EPGList):
+class TimerPlannerList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
 	def __init__(self, selChangedCB, timer):
 		EPGList.__init__(self, type=EPG_TYPE_SINGLE, selChangedCB=selChangedCB, timer=timer)
@@ -49,7 +49,7 @@ class CustomEPGList(EPGList):
 				try:
 					self.columnDimensions[name] = max(0, parseScale(value))
 				except (TypeError, ValueError):
-					print("[CustomEPG] Invalid skin attribute %s: %s" % (name, value))
+					print("[TimerPlanner] Invalid skin attribute %s: %s" % (name, value))
 			else:
 				remaining.append((name, value))
 		self.skinAttributes = remaining
@@ -163,7 +163,7 @@ class CustomEPGList(EPGList):
 			return sort_events(rows, sorting, self.getEventRating)
 		start = perf_counter()
 		result = sort_events(rows, sorting, self.getEventRating, cfg.alphabetsort.value)
-		print("[CustomEPG] A-Z sort (%s): %d events, %.1f ms" %
+		print("[TimerPlanner] A-Z sort (%s): %d events, %.1f ms" %
 			(cfg.alphabetsort.value, len(rows), (perf_counter() - start) * 1000))
 		return result
 
@@ -179,7 +179,7 @@ class CustomEPGList(EPGList):
 		self.selectionChanged()
 
 
-class CustomEPGSelection(EPGSelection):
+class TimerPlannerSelection(EPGSelection):
 
 	def __init__(self, session):
 		self._previewOriginalService = None
@@ -203,8 +203,8 @@ class CustomEPGSelection(EPGSelection):
 			"2": (self.openDurationFilter, _("Filter by event duration")),
 			"5": (self.reloadEPG, _("Refresh EPG")),
 		}, -2)
-		self.skinName = ["CustomEPGSelection", "EPGSelection"]
-		self["list"] = CustomEPGList(self.onSelectionChanged, session.nav.RecordTimer)
+		self.skinName = ["TimerPlannerSelection", "EPGSelection"]
+		self["list"] = TimerPlannerList(self.onSelectionChanged, session.nav.RecordTimer)
 		self["key_blue"].setText(_("Services"))
 		self["key_red"].setText(_("Zap"))
 		self.custom_ready = True
@@ -221,13 +221,13 @@ class CustomEPGSelection(EPGSelection):
 
 	def reloadEPG(self):
 		try:
-			path = resolveFilename(SCOPE_CONFIG, "customepg.xml")
-			services = load_services(path) if exists(path) else load_legacy_services(resolveFilename(SCOPE_CONFIG, "customepg.json"))
+			path = resolveFilename(SCOPE_CONFIG, "timerplanner.xml")
+			services = load_services(path) if exists(path) else load_legacy_services(resolveFilename(SCOPE_CONFIG, "timerplanner.json"))
 		except (OSError, ValueError) as error:
 			self.references = []
 			self["list"].reload([], self.sort_type, self.filtering)
 			self.updateTitle()
-			self.session.open(MessageBox, _("Cannot load CustomEPG settings:\n%s") % error, MessageBox.TYPE_ERROR)
+			self.session.open(MessageBox, _("Cannot load TimerPlanner settings:\n%s") % error, MessageBox.TYPE_ERROR)
 			return
 		self.references = [ref for ref, name in services]
 		self["list"].reload(self.references, self.sort_type, self.filtering)
@@ -256,7 +256,7 @@ class CustomEPGSelection(EPGSelection):
 			fetch()
 
 	def updateTitle(self):
-		title = "CustomEPG - " + (_("by time"), "A-Z", _("by rating"))[self.sort_type]
+		title = "TimerPlanner - " + (_("by time"), "A-Z", _("by rating"))[self.sort_type]
 		if self.filtering:
 			title += " " + self.getTimespanText()
 		self.setTitle(title)
@@ -299,9 +299,9 @@ class CustomEPGSelection(EPGSelection):
 		self.session.openWithCallback(selected, ChoiceBox, title=_("Select action"), list=menu, keys=keys)
 
 	def openDurationFilter(self):
-		from .settings import CustomEPGDurationSetup
+		from .settings import TimerPlannerDurationSetup
 		self.session.openWithCallback(self.durationFilterSelected,
-			CustomEPGDurationSetup, self["list"].minimum_duration, self["list"].maximum_duration)
+			TimerPlannerDurationSetup, self["list"].minimum_duration, self["list"].maximum_duration)
 
 	def durationFilterSelected(self, limits):
 		if limits is None:
@@ -312,8 +312,8 @@ class CustomEPGSelection(EPGSelection):
 		self.updateTitle()
 
 	def openSettings(self):
-		from .settings import CustomEPGSetup
-		self.session.openWithCallback(self.settingsSaved, CustomEPGSetup)
+		from .settings import TimerPlannerSetup
+		self.session.openWithCallback(self.settingsSaved, TimerPlannerSetup)
 
 	def settingsSaved(self, saved=False):
 		if saved:
@@ -326,7 +326,7 @@ class CustomEPGSelection(EPGSelection):
 	def blueButtonPressed(self):
 		self.serviceEditorAlphabet = cfg.alphabetsort.value
 		self.serviceEditorHideStarted = cfg.hide_started.value
-		self.session.openWithCallback(self.servicesEdited, CustomEPGServiceEditor)
+		self.session.openWithCallback(self.servicesEdited, TimerPlannerServiceEditor)
 
 	def servicesEdited(self, saved=False):
 		if saved:

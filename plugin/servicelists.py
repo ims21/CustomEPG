@@ -1,4 +1,4 @@
-"""Named snapshots, separate from the active customepg.xml."""
+"""Named snapshots, separate from the active timerplanner.xml."""
 import os
 from urllib.parse import quote, unquote
 from .storage import load_services, save_services

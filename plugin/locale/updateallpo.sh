@@ -11,7 +11,7 @@
 # Version: 1.1a
 # modify by ims
 #
-Plugin=CustomEPG
+Plugin=TimerPlanner
 FilePath=/LC_MESSAGES/
 localgsed="sed"
 gsed --version 2> /dev/null | grep -q "GNU"
