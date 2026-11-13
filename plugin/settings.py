@@ -75,7 +75,7 @@ class TimerPlannerSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.close(True)
 
 	def keyCancel(self):
-		if self["config"].isChanged():
+		if self["config"].isChanged() or cfg.currentservice.isChanged():
 			self.session.openWithCallback(self.cancelConfirmed, MessageBox,
 				_("Close without saving changes?"), MessageBox.TYPE_YESNO, default=False)
 		else:
@@ -85,8 +85,7 @@ class TimerPlannerSetup(Screen, ConfigListScreen, HelpableScreen):
 		if answer:
 			for entry in self.entries:
 				entry[1].cancel()
-			if cfg.hide_started.value == "true":
-				cfg.currentservice.cancel()
+			cfg.currentservice.cancel()
 			self.close(False)
 
 	def refreshPlugins(self):
@@ -104,10 +103,8 @@ class TimerPlannerDurationSetup(TimerPlannerSetup):
 		self.duration = ConfigSelection(default=str(minimum), choices=duration_choices)
 		self.maximum = ConfigSelection(default=str(maximum), choices=duration_choices)
 		self.entries = [
-			getConfigListEntry(_("Hide events shorter than"), self.duration,
-				_("Temporary setting. Applies only until TimerPlanner is closed.")),
-			getConfigListEntry(_("Hide events longer than"), self.maximum,
-				_("Temporary setting. Applies only until TimerPlanner is closed.")),
+			(_("Hide events shorter than"), self.duration, _("Temporary setting. Applies only until TimerPlanner is closed.")),
+			(_("Hide events longer than"), self.maximum, _("Temporary setting. Applies only until TimerPlanner is closed.")),
 		]
 		self["config"].setList(self.entries)
 		self["key_green"].setText(_("Apply"))

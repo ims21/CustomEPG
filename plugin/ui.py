@@ -17,7 +17,7 @@ from .epgdata import collect_events, event_key, selection_index, sort_events
 from .services import TimerPlannerServiceEditor, service_name
 from .storage import load_legacy_services, load_services
 
-VERSION = "1.02"
+VERSION = "1.03"
 
 COLOR_GRAY = 0x00D0D0D0
 COLOR_RATING = 0x000080B0
@@ -118,7 +118,7 @@ class TimerPlannerList(EPGList):
 					entry.extend([None] * max(0, 10 - len(entry)))
 					entry[8] = COLOR_GRAY	# row: gray
 					entry[9] = None		# selected row: color from skin
-				elif (self.showRating() and entry[1] == self.rating_rect.x + self.sidesMargin):	# rating
+				elif self.showRating() and index == 3:	# rating
 					entry.extend([None] * max(0, 10 - len(entry)))
 					entry[8] = COLOR_RATING	# rating
 					entry[9] = None		# selected row: color from skin
@@ -329,16 +329,18 @@ class TimerPlannerSelection(EPGSelection):
 			self.reloadEPG()
 
 	def blueButtonPressed(self):
-		self.serviceEditorAlphabet = cfg.alphabetsort.value
-		self.serviceEditorHideStarted = cfg.hide_started.value
+		self.serviceEditorSettings = (
+			cfg.alphabetsort, cfg.hide_started, cfg.minimum_duration,
+			cfg.maximum_duration, cfg.showrating, cfg.currentservice,
+		)
+		self.serviceEditorValues = tuple(item.value for item in self.serviceEditorSettings)
 		self.session.openWithCallback(self.servicesEdited, TimerPlannerServiceEditor)
 
 	def servicesEdited(self, saved=False):
-		if saved:
-			self.reloadEPG()
-		elif (getattr(self, "serviceEditorAlphabet", cfg.alphabetsort.value) != cfg.alphabetsort.value
-				or getattr(self, "serviceEditorHideStarted", cfg.hide_started.value) != cfg.hide_started.value):
+		if self.serviceEditorValues != tuple(item.value for item in self.serviceEditorSettings):
 			self.settingsSaved(True)
+		elif saved:
+			self.reloadEPG()
 
 	def _switchService(self, reference, original=None, retval=None, adjust=False):
 		# Use the same timeshift confirmation as normal E2 channel zapping.
