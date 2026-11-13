@@ -19,6 +19,11 @@ from .storage import load_legacy_services, load_services
 
 VERSION = "1.02"
 
+COLOR_GRAY = 0x00D0D0D0
+COLOR_RATING = 0x000080B0
+COLOR_ONGOING = 0x00B8FFE8
+COLOR_FINISHED = 0x00808080
+
 class TimerPlannerList(EPGList):
 	"""SingleEPG rows with an additional service column and a shared event list."""
 	def __init__(self, selChangedCB, timer):
@@ -103,23 +108,23 @@ class TimerPlannerList(EPGList):
 					entry[5] = 2
 					entry[3] = max(0, self.descr_rect.x + self.sidesMargin + self.descr_rect.w - entry[1])
 					entry.extend([None] * max(0, 10 - len(entry)))
-					if ended:	# finished events color
-						entry[8] = 0x00808080
+					if ended:		# finished events color
+						entry[8] = COLOR_FINISHED
 						entry[9] = None
-					elif ongoing:	# ongoing events color
-						entry[8] = 0x00BBFFEE
+					elif ongoing:		# ongoing events color
+						entry[8] = COLOR_ONGOING
 						entry[9] = None
 				if index in (1, 2):		# day, date/time
 					entry.extend([None] * max(0, 10 - len(entry)))
-					entry[8] = 0x00d0d0d0	# row: gray
+					entry[8] = COLOR_GRAY	# row: gray
 					entry[9] = None		# selected row: color from skin
 				elif (self.showRating() and entry[1] == self.rating_rect.x + self.sidesMargin):	# rating
 					entry.extend([None] * max(0, 10 - len(entry)))
-					entry[8] = 0x000080b0	# rating: blue light
+					entry[8] = COLOR_RATING	# rating
 					entry[9] = None		# selected row: color from skin
 				row[index] = tuple(entry)
 		r = self.service_rect
-		row.append((eListboxPythonMultiContent.TYPE_TEXT, r.x + self.sidesMargin, r.y, r.w, r.h, 3, RT_HALIGN_LEFT | RT_VALIGN_CENTER, self.service_names.get(service, "<N/A>"),0x00d0d0d0, None)) # service
+		row.append((eListboxPythonMultiContent.TYPE_TEXT, r.x + self.sidesMargin, r.y, r.w, r.h, 3, RT_HALIGN_LEFT | RT_VALIGN_CENTER, self.service_names.get(service, "<N/A>"), COLOR_GRAY, None)) # service
 		return row
 
 	def reload(self, references, sorting=0, filtering=0):
