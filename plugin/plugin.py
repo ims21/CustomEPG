@@ -1,4 +1,6 @@
+from os.path import exists
 from Plugins.Plugin import PluginDescriptor
+from Tools.Directories import SCOPE_CONFIG, resolveFilename
 
 from . import _
 from .configuration import cfg
@@ -6,7 +8,16 @@ from .configuration import cfg
 
 def main(session, **kwargs):
 	from .ui import TimerPlannerSelection
-	session.open(TimerPlannerSelection)
+	if exists(resolveFilename(SCOPE_CONFIG, "timerplanner.xml")):
+		session.open(TimerPlannerSelection)
+	else:
+		from .services import TimerPlannerServiceEditor
+
+		def servicesSaved(saved=False):
+			if saved:
+				session.open(TimerPlannerSelection)
+
+		session.openWithCallback(servicesSaved, TimerPlannerServiceEditor)
 
 
 def extensionsMain(session, **kwargs):
