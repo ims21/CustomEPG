@@ -14,7 +14,7 @@ from ServiceReference import ServiceReference
 from Tools.Directories import SCOPE_CONFIG, resolveFilename
 from enigma import eServiceCenter, eServiceReference
 
-from . import _
+from . import _, ngettext
 from .storage import load_legacy_services, load_services, save_services
 from .servicelists import list_path, list_names, save_list, load_list, delete_list
 
@@ -88,7 +88,7 @@ class TimerPlannerServiceEditor(Screen):
 		<widget source="key_yellow" render="Label" position="300,10" size="140,32" font="Regular;20" backgroundColor="#8f7700" halign="center" valign="center" />
 		<widget source="key_blue" render="Label" position="445,10" size="145,32" font="Regular;20" backgroundColor="#153b8f" halign="center" valign="center" />
 		<widget name="config" position="10,55" size="580,325" font="Regular;22" itemHeight="25" scrollbarMode="showOnDemand" />
-		<widget source="status" render="Label" position="10,390" size="580,40" font="Regular;18" />
+		<widget source="description" render="Label" position="10,390" size="580,40" font="Regular;18" />
 	</screen>"""
 
 	def __init__(self, session):
@@ -117,7 +117,6 @@ class TimerPlannerServiceEditor(Screen):
 		self["key_yellow"] = StaticText(_("Remove"))
 		self["key_blue"] = StaticText(_("Add"))
 		self["config"] = MenuList([])
-		self["status"] = StaticText()
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "MenuActions"], {
 			"cancel": self.cancel,
 			"red": self.cancel,
@@ -134,7 +133,6 @@ class TimerPlannerServiceEditor(Screen):
 		self.onLayoutFinish.append(self.reportLoadError)
 
 	def setStatus(self, text):
-		self["status"].setText(text)
 		self["description"].setText(text)
 
 	def reportLoadError(self):
@@ -150,7 +148,7 @@ class TimerPlannerServiceEditor(Screen):
 		self["config"].setList(rows)
 		if rows:
 			self["config"].moveToIndex(min(index, len(rows) - 1))
-		self.setStatus(_("Services: %d") % len(rows) if rows else _("Press BLUE to add a service from a bouquet."))
+		self.setStatus(ngettext("Services: %d", "Services: %d", len(rows)) % len(rows) if rows else _("Press BLUE to add a service from a bouquet."))
 
 	def openMenu(self):
 		self.session.openWithCallback(self.menuSelected, ChoiceBox,

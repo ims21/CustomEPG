@@ -261,7 +261,7 @@ class TimerPlannerSelection(EPGSelection):
 			fetch()
 
 	def updateTitle(self):
-		title = "TimerPlanner - " + (_("by time"), "A-Z", _("by rating"))[self.sort_type]
+		title = "TimerPlanner - " + (_("Events by time"), _("Events alphabetically"), _("Events by rating"))[self.sort_type]
 		if self.filtering:
 			title += " " + self.getTimespanText()
 		self.setTitle(title)

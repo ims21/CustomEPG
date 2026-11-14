@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-13 12:13+0100\n"
+"POT-Creation-Date: 2026-11-14 08:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../configuration.py:13
 #, python-format
@@ -38,7 +39,7 @@ msgstr ""
 msgid "Applies to 'A-Z' only. 'Standard' disables character conversion."
 msgstr ""
 
-#: ../settings.py:113
+#: ../settings.py:110
 msgid "Apply"
 msgstr ""
 
@@ -50,28 +51,28 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../services.py:169
+#: ../services.py:167
 #, python-format
 msgid ""
 "Cannot access service list:\n"
 "%s"
 msgstr ""
 
-#: ../ui.py:230 ../services.py:142
+#: ../ui.py:235 ../services.py:140
 #, python-format
 msgid ""
 "Cannot load TimerPlanner settings:\n"
 "%s"
 msgstr ""
 
-#: ../services.py:287
+#: ../services.py:285
 #, python-format
 msgid ""
 "Cannot save TimerPlanner settings:\n"
 "%s"
 msgstr ""
 
-#: ../settings.py:80 ../services.py:293
+#: ../settings.py:80 ../services.py:291
 msgid "Close without saving changes?"
 msgstr ""
 
@@ -87,20 +88,32 @@ msgstr ""
 msgid "Default setting for the minimum duration of displayed events."
 msgstr ""
 
-#: ../services.py:160 ../services.py:229
+#: ../services.py:158 ../services.py:227
 msgid "Delete list"
 msgstr ""
 
-#: ../services.py:234
+#: ../services.py:232
 #, python-format
 msgid "Delete list '%s'?"
 msgstr ""
 
-#: ../settings.py:103
+#: ../settings.py:102
 msgid "Event duration - temporary setting"
 msgstr ""
 
-#: ../ui.py:203
+#: ../ui.py:264
+msgid "Events alphabetically"
+msgstr ""
+
+#: ../ui.py:264
+msgid "Events by rating"
+msgstr ""
+
+#: ../ui.py:264
+msgid "Events by time"
+msgstr ""
+
+#: ../ui.py:208
 msgid "Filter by event duration"
 msgstr ""
 
@@ -116,11 +129,11 @@ msgstr ""
 msgid "Hide events"
 msgstr ""
 
-#: ../settings.py:41 ../settings.py:109
+#: ../settings.py:41 ../settings.py:107
 msgid "Hide events longer than"
 msgstr ""
 
-#: ../settings.py:40 ../settings.py:107
+#: ../settings.py:40 ../settings.py:106
 msgid "Hide events shorter than"
 msgstr ""
 
@@ -141,11 +154,11 @@ msgstr ""
 msgid "Latin2 with 'Ch'"
 msgstr ""
 
-#: ../services.py:174
+#: ../services.py:172
 msgid "List name"
 msgstr ""
 
-#: ../services.py:159 ../services.py:210
+#: ../services.py:157 ../services.py:208
 msgid "Load list"
 msgstr ""
 
@@ -165,7 +178,7 @@ msgstr ""
 msgid "No limit"
 msgstr ""
 
-#: ../services.py:207
+#: ../services.py:205
 msgid "No saved service lists."
 msgstr ""
 
@@ -173,20 +186,20 @@ msgstr ""
 msgid "OK: open bouquet and select a service, MENU: Import all services"
 msgstr ""
 
-#: ../services.py:187
+#: ../services.py:185
 #, python-format
 msgid "Overwrite list '%s'?"
 msgstr ""
 
-#: ../services.py:153
+#: ../services.py:151
 msgid "Press BLUE to add a service from a bouquet."
 msgstr ""
 
-#: ../ui.py:200
+#: ../ui.py:205
 msgid "Preview service / return"
 msgstr ""
 
-#: ../ui.py:204
+#: ../ui.py:209
 msgid "Refresh EPG"
 msgstr ""
 
@@ -194,7 +207,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../services.py:216
+#: ../services.py:214
 #, python-format
 msgid "Replace the current selection with list '%s'?"
 msgstr ""
@@ -203,11 +216,11 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../services.py:158
+#: ../services.py:156
 msgid "Save as list"
 msgstr ""
 
-#: ../ui.py:299
+#: ../ui.py:304
 msgid "Select action"
 msgstr ""
 
@@ -215,24 +228,26 @@ msgstr ""
 msgid "Select service for TimerPlanner"
 msgstr ""
 
-#: ../ui.py:208
+#: ../ui.py:213
 msgid "Services"
 msgstr ""
 
-#: ../services.py:153
+#: ../services.py:151
 #, python-format
 msgid "Services: %d"
-msgstr ""
+msgid_plural "Services: %d"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../settings.py:39
 msgid "Set cursor to the currently playing event when opening TimerPlanner."
 msgstr ""
 
-#: ../ui.py:294 ../services.py:161
+#: ../ui.py:299 ../services.py:159
 msgid "Settings"
 msgstr ""
 
-#: ../services.py:282
+#: ../services.py:280
 msgid "Settings could not be loaded. Fix the settings file before saving."
 msgstr ""
 
@@ -268,27 +283,27 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-#: ../settings.py:108 ../settings.py:110
+#: ../settings.py:106 ../settings.py:107
 msgid "Temporary setting. Applies only until TimerPlanner is closed."
 msgstr ""
 
-#: ../services.py:270
+#: ../services.py:268
 msgid "This service is already selected."
 msgstr ""
 
-#: ../ui.py:292
+#: ../ui.py:297
 msgid "Timer Overview"
 msgstr ""
 
-#: ../plugin.py:20
+#: ../plugin.py:31
 msgid "Timer planner for selected services"
 msgstr ""
 
-#: ../plugin.py:19
+#: ../plugin.py:30
 msgid "TimerPlanner"
 msgstr ""
 
-#: ../services.py:97 ../services.py:157
+#: ../services.py:97 ../services.py:155
 msgid "TimerPlanner - Services"
 msgstr ""
 
@@ -297,14 +312,6 @@ msgstr ""
 msgid "TimerPlanner v%s - Settings"
 msgstr ""
 
-#: ../ui.py:209 ../ui.py:408
+#: ../ui.py:214 ../ui.py:415
 msgid "Zap"
-msgstr ""
-
-#: ../ui.py:259
-msgid "by rating"
-msgstr ""
-
-#: ../ui.py:259
-msgid "by time"
 msgstr ""
